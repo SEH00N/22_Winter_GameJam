@@ -10,7 +10,6 @@ public class Gimmick : PoolableMono
 
     public override void Reset()
     {
-        throw new System.NotImplementedException();
     }
 
     void Update()
