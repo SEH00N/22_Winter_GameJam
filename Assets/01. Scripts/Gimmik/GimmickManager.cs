@@ -16,7 +16,7 @@ public class GimmickManager : MonoBehaviour
     [SerializeField] List<Gimmick> gimmicks = new List<Gimmick>();
     [SerializeField] Transform gimmickSpawnPosition = null;
     [SerializeField] float gimmickSpawnDelayDistance = 50f;
-    public float GimmickSpawnDelayDistance => gimmmickSpawnDelayDistance;
+    public float GimmickSpawnDelayDistance => gimmickSpawnDelayDistance;
 
     //player에서 GimmickManager.Instance.SpawnRandomGimmick() 해서 일정 딜레이마다 호출해야됨
     public void SpawnRandomGimmick()

@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     private Rigidbody rb = null;
 
     private float currentVelocity = 0f;
+    public float CurrentVelocity => currentVelocity;
 
     private Vector3 currentDir = Vector3.zero;
     private Vector2 CurrentPlaneVector => new Vector2(currentDir.x, currentDir.z);

@@ -22,11 +22,11 @@ public class PlayerInput : MonoBehaviour
         moveSpeed += Time.deltaTime * speedIncAmountPerSec;
 
         movedDistance += movement.CurrentVelocity * Time.deltaTime;
-        if(movedDistance >= GimmickManager.Instance.GimmickSpawnDelayDistance)
-        {
-            moveDistance = 0f;
-            GimmickManager.Instance.SpawnRandomGimmick();
-        }
+        // if(movedDistance >= GimmickManager.Instance.GimmickSpawnDelayDistance)
+        // {
+        //     movedDistance = 0f;
+        //     GimmickManager.Instance.SpawnRandomGimmick();
+        // }
     }
 
     private void DoMove()
