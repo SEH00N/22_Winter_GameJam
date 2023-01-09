@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using System;
 using UnityEngine;
 
@@ -27,13 +28,18 @@ public class Movement : MonoBehaviour
         rb.velocity = dir;
     }
 
+    #region 테스트용
     private void Update()
     {
-        if(Input.touchCount > 0)
+        if(Physics.Raycast(transform.position, Vector3.down, 0.5f, 1 << 6))
         {
-            rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            Vector3 velo = rb.velocity;
+            velo.y = 0;
+            rb.velocity = velo;
+            rb.AddForce(Vector3.up * 1f, ForceMode.Impulse);
         }
     }
+    #endregion
 
     public void MoveTo(Vector3 input)
     {

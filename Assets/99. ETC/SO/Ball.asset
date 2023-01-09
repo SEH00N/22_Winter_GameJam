@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49e31af4ac04a642808fa94281f072b, type: 3}
   m_Name: Ball
   m_EditorClassIdentifier: 
-  inAccel: 5
-  deAccel: 5
-  maxSpeed: 30
+  inAccel: 50
+  deAccel: 50
+  maxSpeed: 100
