@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Gimmik : MonoBehaviour
+public class Gimmick : MonoBehaviour
 {
     [SerializeField] List<Decision> decisions = new(); 
     [SerializeField] UnityEvent action;
