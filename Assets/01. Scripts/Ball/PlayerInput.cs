@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float speedIncAmountPerSec = 1f;
     [SerializeField] float gyroReinForce = 0.3f;
     [SerializeField] float rotateSpeed = 2f;
     private Movement movement = null;
+
+    private float timer = 0f;
 
     private void Awake()
     {
@@ -14,6 +18,8 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         DoMove();
+    
+        moveSpeed += Time.deltaTime * speedIncAmountPerSec;
     }
 
     private void DoMove()
@@ -24,6 +30,6 @@ public class PlayerInput : MonoBehaviour
         Quaternion targetRotation = Quaternion.AngleAxis(targetAngle, transform.forward);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
 
-        movement.MoveTo(new (x, 0, 10f));
+        movement.MoveTo(new (x, 0, moveSpeed));
     }
 }
