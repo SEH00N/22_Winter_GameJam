@@ -8,6 +8,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] float rotateSpeed = 2f;
     private Movement movement = null;
 
+    private float movedDistance = 0f;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -18,6 +20,13 @@ public class PlayerInput : MonoBehaviour
         DoMove();
     
         moveSpeed += Time.deltaTime * speedIncAmountPerSec;
+
+        movedDistance += movement.CurrentVelocity * Time.deltaTime;
+        if(movedDistance >= GimmickManager.Instance.GimmickSpawnDelayDistance)
+        {
+            moveDistance = 0f;
+            GimmickManager.Instance.SpawnRandomGimmick();
+        }
     }
 
     private void DoMove()
