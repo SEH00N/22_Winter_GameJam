@@ -12,8 +12,6 @@ public class Movement : MonoBehaviour
     private Vector3 currentDir = Vector3.zero;
     private Vector2 CurrentPlaneVector => new Vector2(currentDir.x, currentDir.z);
 
-    private int currentJumpCount = 0;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
