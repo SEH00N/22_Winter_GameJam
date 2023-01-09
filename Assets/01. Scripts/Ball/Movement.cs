@@ -1,10 +1,9 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using System;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] MovementSO movementSO;
+    [SerializeField] float rayDistance = 2f;
 
     private Rigidbody rb = null;
 
@@ -26,20 +25,20 @@ public class Movement : MonoBehaviour
         dir.y = rb.velocity.y;
 
         rb.velocity = dir;
+
+        AutoJump();
     }
 
-    #region 테스트용
-    private void Update()
+    private void AutoJump()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, 0.5f, 1 << 6))
+        if(Physics.Raycast(transform.position, Vector3.down, rayDistance, DEFINE.GroundLayer))
         {
             Vector3 velo = rb.velocity;
             velo.y = 0;
             rb.velocity = velo;
-            rb.AddForce(Vector3.up * 1f, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * movementSO.jumpSpeed, ForceMode.Impulse);
         }
     }
-    #endregion
 
     public void MoveTo(Vector3 input)
     {

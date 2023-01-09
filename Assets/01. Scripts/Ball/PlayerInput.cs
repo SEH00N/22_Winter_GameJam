@@ -19,19 +19,11 @@ public class PlayerInput : MonoBehaviour
     private void DoMove()
     {
         float x = Input.acceleration.x >= gyroReinForce ? 1f : Input.acceleration.x <= -gyroReinForce ? -1 : 0;
-        // float z = Input.acceleration.y >= gyroReinForce ? 1f : Input.acceleration.y <= -gyroReinForce ? -1 : 0;
-        
-        // float x = Mathf.Abs(Input.acceleration.x) >= gyroReinForce ? Input.acceleration.x : 0;
-        // float z = Mathf.Abs(Input.acceleration.y) >= gyroReinForce ? Input.acceleration.y : 0;
 
-        float zAngle = transform.eulerAngles.z;
-        zAngle += Mathf.Lerp(-25, 25, (x + 1) / 2f) * Time.deltaTime * rotateSpeed;
-        zAngle = Mathf.Clamp(-zAngle, -25f, 25f);
-
-        transform.rotation = Quaternion.Euler(0, 0, zAngle);
+        float targetAngle = -25f * x;
+        Quaternion targetRotation = Quaternion.AngleAxis(targetAngle, transform.forward);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
 
         movement.MoveTo(new (x, 0, 10f));
     }
-
-    // 0 ~ 25
 }
