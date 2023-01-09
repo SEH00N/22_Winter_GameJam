@@ -2375,7 +2375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  speedIncreaseAmountPerSec: 0.5
+  speedIncAmountPerSec: 1
   gyroReinForce: 0.1
   rotateSpeed: 2
 --- !u!114 &7171886679216365635

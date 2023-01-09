@@ -8,8 +8,6 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] float rotateSpeed = 2f;
     private Movement movement = null;
 
-    private float timer = 0f;
-
     private void Awake()
     {
         movement = GetComponent<Movement>();
