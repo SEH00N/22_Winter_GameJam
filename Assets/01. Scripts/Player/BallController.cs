@@ -9,6 +9,7 @@ public class BallController : MonoBehaviour
     private Rigidbody2D rb2d = null;
 
     private BallRotator currentRotator = null;
+    private BallRotator lastRotator = null;
     public bool Rotator => currentRotator != null;
 
     private float rotatorDetectRadius = 10f;
@@ -24,6 +25,7 @@ public class BallController : MonoBehaviour
     }
     private void PosReset(){
         transform.position = InitPos;
+        SetRotator();
     }   
 
     private void Start()
@@ -44,6 +46,7 @@ public class BallController : MonoBehaviour
 
     private void RemoveRotator()
     {
+        lastRotator = currentRotator;
         currentRotator.RemoveBall();
         currentRotator = null;
 
@@ -82,11 +85,24 @@ public class BallController : MonoBehaviour
 
         return targetRotator;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Wall")){
+            if(Rotator)
+                RemoveRotator();
             //파티클
             PosReset();
-        }    
+        }
+        if(other.gameObject.CompareTag("ClearWall")){
+            if(lastRotator.gameObject.CompareTag("FinishRotator")){
+                StageManager.Instance.EndingUiInit();
+                StageManager.Instance.EndingUI.Active();
+            }else{
+                if(Rotator)
+                RemoveRotator();
+            //파티클
+            PosReset();
+            }
+        }
     }
 }
