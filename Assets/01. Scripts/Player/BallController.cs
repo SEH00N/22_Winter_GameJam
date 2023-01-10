@@ -44,7 +44,7 @@ public class BallController : MonoBehaviour
         }
     }
 
-    private void RemoveRotator()
+    public void RemoveRotator()
     {
         lastRotator = currentRotator;
         currentRotator.RemoveBall();
