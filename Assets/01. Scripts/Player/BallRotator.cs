@@ -8,12 +8,10 @@ public class BallRotator : MonoBehaviour
 
     private bool active = false;
 
-    private BallController ball = null;
     private PlayerDetector playerDetector = null;
 
     public void Init(float rotatorDetectRadius)
     {
-        ball = DEFINE.Ball;
         playerDetector = transform.GetChild(0).GetComponent<PlayerDetector>();
 
         playerDetector.Init(rotatorDetectRadius);
@@ -38,15 +36,15 @@ public class BallRotator : MonoBehaviour
 
         Vector2 factor = new Vector2(xFactor, yFactor) * radius;
 
-        ball.transform.position = factor + (Vector2)transform.position;
-        ball.transform.rotation = Quaternion.AngleAxis(deg, Vector3.forward);
+        DEFINE.Ball.transform.position = factor + (Vector2)transform.position;
+        DEFINE.Ball.transform.rotation = Quaternion.AngleAxis(deg, Vector3.forward);
     }
 
     public void SetBall()
     {
         active = true;
         
-        Vector2 factor = ball.transform.position - transform.position;
+        Vector2 factor = DEFINE.Ball.transform.position - transform.position;
         float x = Mathf.Pow(factor.x, 2);
         float y = Mathf.Pow(factor.y, 2);
 
@@ -56,7 +54,7 @@ public class BallRotator : MonoBehaviour
         float angle = Mathf.Atan2(normal.y, normal.x);
 
         deg = angle * Mathf.Rad2Deg;
-        ball.transform.rotation = Quaternion.Euler(0, 0, -deg);
+        DEFINE.Ball.transform.rotation = Quaternion.Euler(0, 0, -deg);
     }
 
     public void RemoveBall()

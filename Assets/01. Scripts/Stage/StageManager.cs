@@ -12,18 +12,24 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    [SerializeField] int stageCount = 5;
+    public int StageCount => stageCount;
+
     private Stage currentStage = null;
 
     public void LoadStage(int index)
     {
-        Stage stage = Resources.Load<Stage>($"Stages/{index}");
+        Stage stage = Resources.Load<Stage>($"Stages/Stage{index}");
         currentStage = Instantiate(stage, Vector3.zero, Quaternion.identity);
-        currentStage.Init();
+        currentStage.Init(index);
     }
 
     public void UnloadStage()
     {
-        Destroy(currentStage);
+        if(currentStage == null)
+            return;
+
+        Destroy(currentStage.gameObject);
 
         currentStage = null;
     }
