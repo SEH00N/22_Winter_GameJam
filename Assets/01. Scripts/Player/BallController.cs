@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
     private BallRotator currentRotator = null;
     public bool Rotator => currentRotator != null;
 
-    private float rotatorDetectRadius = 10f;
+    private float rotatorDetectRadius;
 
     public void Init(float rotatorDetectRadius)
     {

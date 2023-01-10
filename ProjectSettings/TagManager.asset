@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Walll
+  - Wall
+  - FinishRotator
+  - ClearWall
   layers:
   - Default
   - TransparentFX
