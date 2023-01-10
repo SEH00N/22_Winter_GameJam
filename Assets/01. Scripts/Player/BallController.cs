@@ -85,7 +85,7 @@ public class BallController : MonoBehaviour
 
         return targetRotator;
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void  OnCollisionEnter2D(Collision2D other)
     {
         DieParticle particle = PoolManager.Instance.Pop("DiePrefap") as DieParticle;
         Vector2 dir = (Vector2)particle.transform.position - other.contacts[0].point;
