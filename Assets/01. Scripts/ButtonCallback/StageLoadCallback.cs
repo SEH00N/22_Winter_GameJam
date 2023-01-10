@@ -10,7 +10,7 @@ public class StageLoadCallback : MonoBehaviour
 
     private void Awake()
     {
-        blockImage = GameObject.Find("Canvas/BlockImage").GetComponent<Image>();
+        blockImage = DEFINE.StaticCanvas.Find("BlockImage").GetComponent<Image>();
     }
 
     public void SetStage(int index)

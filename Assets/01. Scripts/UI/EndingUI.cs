@@ -71,9 +71,9 @@ public class EndingUI : MonoBehaviour
         nextButton.interactable = false;
 
         seq.AppendInterval(0.3f);
-        seq.Append(endingText.transform.DOMoveY(endingText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
-        seq.Append(stageText.transform.DOMoveY(stageText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
-        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear))
+        seq.Append(endingText.transform.DOMoveY(endingText.transform.localPosition.y + 1920f, 0.3f).SetEase(Ease.Linear));
+        seq.Append(stageText.transform.DOMoveY(stageText.transform.localPosition.y + 1920f, 0.3f).SetEase(Ease.Linear));
+        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.localPosition.y + 1920f, 0.3f).SetEase(Ease.Linear))
             .AppendInterval(0.3f)
             .AppendCallback(() => {
                 background.SetActive(false);
@@ -87,9 +87,9 @@ public class EndingUI : MonoBehaviour
         
         nextButton.interactable = false;
 
-        seq.Append(endingText.transform.DOMoveY(endingText.transform.position.y + 1920f, 0).SetEase(Ease.Linear));
-        seq.Append(stageText.transform.DOMoveY(stageText.transform.position.y + 1920f, 0).SetEase(Ease.Linear));
-        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.position.y + 1920f, 0).SetEase(Ease.Linear))
+        seq.Append(endingText.transform.DOMoveY(endingText.transform.localPosition.y + 1920f, 0).SetEase(Ease.Linear));
+        seq.Append(stageText.transform.DOMoveY(stageText.transform.localPosition.y + 1920f, 0).SetEase(Ease.Linear));
+        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.localPosition.y + 1920f, 0).SetEase(Ease.Linear))
             .AppendCallback(() => {
                 background.SetActive(false);
                 seq.Kill();

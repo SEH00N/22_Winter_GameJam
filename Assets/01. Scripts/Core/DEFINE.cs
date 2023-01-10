@@ -15,6 +15,16 @@ public static class DEFINE
             return ball;
         }
     }
+
+    private static Transform staticCanvas = null;
+    public static Transform StaticCanvas {
+        get {
+            if(staticCanvas == null)
+                staticCanvas = GameManager.Instance.transform.Find("StaticCanvas");
+            
+            return staticCanvas;
+        }
+    }
     
     private static Camera mainCam = null;
     public static Camera MainCam {
