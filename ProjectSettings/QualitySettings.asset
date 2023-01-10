@@ -198,15 +198,15 @@ QualitySettings:
     shadowCascade2Split: 0.33333334
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
     shadowmaskMode: 1
-    skinWeights: 4
+    skinWeights: 255
     textureQuality: 0
     anisotropicTextures: 2
-    antiAliasing: 8
+    antiAliasing: 0
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
-    vSyncCount: 0
+    vSyncCount: 1
     lodBias: 2
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -220,18 +220,16 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: b42eea42303c0c64980e156717ac12cd, type: 2}
+    customRenderPipeline: {fileID: 0}
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Android: 5
+    Android: 2
+    Lumin: 5
     GameCoreScarlett: 5
     GameCoreXboxOne: 5
-    Lumin: 5
-    Nintendo 3DS: 5
     Nintendo Switch: 5
     PS4: 5
     PS5: 5
-    Server: 0
     Stadia: 5
     Standalone: 5
     WebGL: 3

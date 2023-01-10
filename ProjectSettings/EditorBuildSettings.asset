@@ -6,15 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00. Scenes/Desert.unity
-    guid: fdce7db68af37514094696df31e1b2d0
-  - enabled: 1
-    path: Assets/00. Scenes/Galaxy.unity
-    guid: 7f85b95902401664185c79e90106c303
-  - enabled: 1
-    path: Assets/00. Scenes/AlienWorld.unity
-    guid: de9249d0f7c860c4e8e0e892ba8cb890
-  - enabled: 1
-    path: Assets/00. Scenes/Intro.unity
-    guid: a817a0dc39d7f484687b41f01ccd82c9
+    path: Assets/00. Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
