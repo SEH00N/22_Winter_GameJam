@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -10,22 +9,13 @@ public class StageSelectMenu : MonoBehaviour
     private void Awake()
     {
         blockImage = DEFINE.StaticCanvas.Find("BlockImage").GetComponent<Image>();
+        
+        InactiveImmediately();
     }
 
     private void Start()
     {
-        InactiveImmediately();
-
         Active();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.D))
-            Active();
-    
-        if(Input.GetKeyDown(KeyCode.F))
-            Inactive();
     }
 
     public void Active()
@@ -50,11 +40,7 @@ public class StageSelectMenu : MonoBehaviour
 
     public void InactiveImmediately()
     {
-        Sequence seq = DOTween.Sequence();
-
-        seq.Append(transform.DOMoveY(transform.position.y - 100, 0));
-        seq.Append(transform.DOMoveY(transform.position.y + 1920, 0));
-        seq.Join(blockImage.DOFade(1f, 0));
-        seq.AppendCallback(() => seq.Kill() );
+        transform.position = new Vector3(transform.position.x, transform.position.y + 1920);
+        blockImage.color = new Color(blockImage.color.r, blockImage.color.g, blockImage.color.b, 1f);
     }
 }

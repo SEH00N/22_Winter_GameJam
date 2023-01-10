@@ -18,7 +18,7 @@ public class SceneLoader : MonoBehaviour
     private Scene currentScene;
     public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
-    private GameObject loadingPanel = null;
+    // private GameObject loadingPanel = null;
 
     private void Awake()
     {
@@ -35,15 +35,15 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadAsyncCoroutine(string name, Action callback)
     {
-        AudioManager.Instance.PauseBGM();
+        // AudioManager.Instance.PauseBGM();
         AsyncOperation oper = SceneManager.LoadSceneAsync(name);
-        loadingPanel.SetActive(true);
+        // loadingPanel.SetActive(true);
 
         while(!oper.isDone)
             yield return null;
 
         yield return null;
-        loadingPanel.SetActive(false);
+        // loadingPanel.SetActive(false);
         CurrentScene = SceneManager.GetActiveScene();
         callback?.Invoke();
     }

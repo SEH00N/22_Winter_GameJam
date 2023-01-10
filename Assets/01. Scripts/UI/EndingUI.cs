@@ -29,15 +29,6 @@ public class EndingUI : MonoBehaviour
         InactiveImmediately();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A))
-            Active();
-
-        if(Input.GetKeyDown(KeyCode.S))
-            Inactive();
-    }
-
     public void Init(int stageIndex)
     {
         stageText.text = $"{stageIndex + 1}/{StageManager.Instance.StageCount}";
@@ -71,9 +62,9 @@ public class EndingUI : MonoBehaviour
         nextButton.interactable = false;
 
         seq.AppendInterval(0.3f);
-        seq.Append(endingText.transform.DOMoveY(endingText.transform.localPosition.y + 1920f, 0.3f).SetEase(Ease.Linear));
-        seq.Append(stageText.transform.DOMoveY(stageText.transform.localPosition.y + 1920f, 0.3f).SetEase(Ease.Linear));
-        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.localPosition.y + 1920f, 0.3f).SetEase(Ease.Linear))
+        seq.Append(endingText.transform.DOMoveY(endingText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
+        seq.Append(stageText.transform.DOMoveY(stageText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
+        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear))
             .AppendInterval(0.3f)
             .AppendCallback(() => {
                 background.SetActive(false);
@@ -83,16 +74,11 @@ public class EndingUI : MonoBehaviour
 
     public void InactiveImmediately()
     {
-        Sequence seq = DOTween.Sequence();
-        
         nextButton.interactable = false;
+        background.SetActive(false);
 
-        seq.Append(endingText.transform.DOMoveY(endingText.transform.localPosition.y + 1920f, 0).SetEase(Ease.Linear));
-        seq.Append(stageText.transform.DOMoveY(stageText.transform.localPosition.y + 1920f, 0).SetEase(Ease.Linear));
-        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.localPosition.y + 1920f, 0).SetEase(Ease.Linear))
-            .AppendCallback(() => {
-                background.SetActive(false);
-                seq.Kill();
-            });
+        endingText.transform.position = new Vector3(endingText.transform.position.x, endingText.transform.position.y + 1920f);
+        stageText.transform.position = new Vector3(stageText.transform.position.x, stageText.transform.position.y + 1920f);
+        nextObject.transform.position = new Vector3(nextObject.transform.position.x, nextObject.transform.position.y + 1920f);
     }
 }
