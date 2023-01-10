@@ -12,13 +12,19 @@ public class BallController : MonoBehaviour
     public bool Rotator => currentRotator != null;
 
     private float rotatorDetectRadius = 10f;
+    private Vector2 InitPos;
 
     public void Init(float rotatorDetectRadius)
     {
         rb2d = GetComponent<Rigidbody2D>();
 
         this.rotatorDetectRadius = rotatorDetectRadius;
+
+        InitPos = transform.position;
     }
+    private void PosReset(){
+        transform.position = InitPos;
+    }   
 
     private void Start()
     {
@@ -75,5 +81,12 @@ public class BallController : MonoBehaviour
         BallRotator targetRotator = detectedRotators[0].GetComponent<BallRotator>();
 
         return targetRotator;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Wall")){
+            //파티클
+            PosReset();
+        }    
     }
 }

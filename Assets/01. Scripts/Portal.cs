@@ -10,4 +10,7 @@ public class Portal : Gimmick
     {
         Ball.transform.position = exitTrm.transform.position;
     }
+    private void OnCollisionEnter(Collision other) {
+        ActiveGimmick();
+    }
 }
