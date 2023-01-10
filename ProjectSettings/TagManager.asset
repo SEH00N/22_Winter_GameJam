@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Wall
   - FinishRotator
-  - Walll
   - ClearWall
   layers:
   - Default
