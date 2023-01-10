@@ -44,7 +44,7 @@ public class BallController : MonoBehaviour
         }
     }
 
-    private void RemoveRotator()
+    public void RemoveRotator()
     {
         lastRotator = currentRotator;
         currentRotator.RemoveBall();
@@ -87,7 +87,7 @@ public class BallController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Wall")){
+        if(other.gameObject.CompareTag("Wall")||other.gameObject.CompareTag("FinishRotator")){
             if(Rotator)
                 RemoveRotator();
             //파티클
