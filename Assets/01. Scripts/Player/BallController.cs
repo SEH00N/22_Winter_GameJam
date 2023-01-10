@@ -85,12 +85,15 @@ public class BallController : MonoBehaviour
 
         return targetRotator;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
+        DieParticle particle = PoolManager.Instance.Pop("DiePrefap") as DieParticle;
+        Vector2 dir = (Vector2)particle.transform.position - other.contacts[0].point;
+        float angle =Mathf.Atan2(dir.y,dir.x)*Mathf.Rad2Deg;
         if(other.gameObject.CompareTag("Wall")||other.gameObject.CompareTag("FinishRotator")){
             if(Rotator)
                 RemoveRotator();
-            //파티클
+            particle.Init(transform.position,Quaternion.Euler(0,0,angle));
             PosReset();
         }
         if(other.gameObject.CompareTag("ClearWall")){
@@ -100,7 +103,7 @@ public class BallController : MonoBehaviour
             }else{
                 if(Rotator)
                 RemoveRotator();
-            //파티클
+            particle.Init(transform.position,Quaternion.Euler(0,0,angle));
             PosReset();
             }
         }
