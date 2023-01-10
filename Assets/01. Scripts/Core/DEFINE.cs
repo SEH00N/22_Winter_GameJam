@@ -20,7 +20,7 @@ public static class DEFINE
     public static Transform StaticCanvas {
         get {
             if(staticCanvas == null)
-                staticCanvas = GameManager.Instance.transform.Find("StaticCanvas");
+                staticCanvas = GameObject.Find("GameManager/StaticCanvas").transform;
             
             return staticCanvas;
         }
