@@ -33,7 +33,7 @@ public class EndingUI : MonoBehaviour
     {
         stageText.text = $"{stageIndex + 1}/{StageManager.Instance.StageCount}";
 
-        nextButtonCallback.SetStage(stageIndex + 2);
+        nextButtonCallback.SetStage(stageIndex + 1);
     }
 
     //클리어할 때
