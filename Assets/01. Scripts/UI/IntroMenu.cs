@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class IntroMenu : MonoBehaviour
 {
     [SerializeField] float rotateRadius = 10f;
+    [SerializeField] Animator ballAnim = null;
     private Image blockImage = null;
 
     private void Awake()
@@ -18,6 +19,7 @@ public class IntroMenu : MonoBehaviour
     
     public void StartGame(float interval)
     {
+        ballAnim.SetTrigger("Start");
         Sequence seq = DOTween.Sequence();
 
         seq.AppendInterval(interval);
