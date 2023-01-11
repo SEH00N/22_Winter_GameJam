@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  speed: 1
+  speed: 0.7
   deg: 0
 --- !u!212 &249634216931069716
 SpriteRenderer:
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  speed: 1
+  speed: 0.7
   deg: 0
 --- !u!212 &249634217084207872
 SpriteRenderer:
@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  speed: 1
+  speed: 0.7
   deg: 0
 --- !u!212 &4734060784965836671
 SpriteRenderer:
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  speed: 1
+  speed: 0.7
   deg: 0
 --- !u!212 &4734060785207345924
 SpriteRenderer:
@@ -1842,7 +1842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  speed: 1
+  speed: 0.7
   deg: 0
 --- !u!212 &4734060785499077359
 SpriteRenderer:
@@ -2068,7 +2068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  speed: 1
+  speed: 0.7
   deg: 0
 --- !u!212 &4734060785884623664
 SpriteRenderer:
@@ -2350,7 +2350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
-  speed: 14
+  speed: 10
 --- !u!212 &8105408214430627075
 SpriteRenderer:
   m_ObjectHideFlags: 0

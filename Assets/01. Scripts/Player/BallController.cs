@@ -32,6 +32,7 @@ public class BallController : MonoBehaviour
     private void Start()
     {
         SetRotator();
+        rb2d.velocity = Vector2.zero;
         transform.position = InitPos;
     }
 
@@ -39,6 +40,13 @@ public class BallController : MonoBehaviour
     {
         if(active == false) return;
 
+        // if(Input.GetTouch(0).phase == TouchPhase.Ended)
+        // {
+        //     if(Rotator)
+        //         RemoveRotator();
+        //     else
+        //         SetRotator();
+        // }
         if(Input.GetKeyDown(KeyCode.Space))
         {
             if(Rotator)
