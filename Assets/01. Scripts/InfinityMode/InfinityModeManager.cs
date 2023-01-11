@@ -5,21 +5,26 @@ public class InfinityModeManager : MonoBehaviour
 {
     [SerializeField] float ySize;
     [SerializeField] string[] stageName;
-    private float yPos = 0f;
+    private float yPos = 10f;
 
     private int score = 0;
 
     private InfinityModeUI infinityModeUI = null;
     private FollowingCamera followingCamera = null;
 
+    private BallController ballController = null;
+
     private void Awake() 
     {
         infinityModeUI = GameObject.Find("Canvas/InfinityModeEndingUI").GetComponent<InfinityModeUI>();
+        ballController = transform.Find("Ball").GetComponent<BallController>();
         followingCamera = DEFINE.MainCam.GetComponent<FollowingCamera>();
 
         InitGame();
-    
-        Ball.Init(4f);
+    }
+    private void Start() {
+        
+        ballController.Init(4f);
     }
 
     private void InitGame()
@@ -46,7 +51,6 @@ public class InfinityModeManager : MonoBehaviour
     public void End()
     {
         followingCamera.Active(false);
-        followingCamera.Reset();
         
         infinityModeUI.Init(score);
         infinityModeUI.Active();

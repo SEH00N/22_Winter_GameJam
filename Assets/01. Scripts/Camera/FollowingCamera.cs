@@ -40,9 +40,9 @@ public class FollowingCamera : MonoBehaviour
         confiner.SetActive(active);
     }
 
-    public void Reset()
+    public void Init()
     {
-        background.Reset();
+        background.Init();
         transform.position = new Vector3(0, 0, -10f);
     }
 }

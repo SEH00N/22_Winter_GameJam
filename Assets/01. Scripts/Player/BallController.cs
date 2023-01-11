@@ -25,19 +25,14 @@ public class BallController : MonoBehaviour
         this.rotatorDetectRadius = rotatorDetectRadius;
 
         initPos = transform.position;
+
+        rb2d.velocity = Vector2.zero;        
     }
 
     public void PosReset()
     {
         transform.position = initPos;
         SetRotator();
-    }
-
-    private void Start()
-    {
-        SetRotator();
-        rb2d.velocity = Vector2.zero;
-        transform.position = initPos;
     }
 
     private void Update()
@@ -77,6 +72,7 @@ public class BallController : MonoBehaviour
     public void SetRotator()
     {
         currentRotator = DetectRotator();
+        Debug.Log(currentRotator);
 
         if (currentRotator == null)
             return;
@@ -88,6 +84,14 @@ public class BallController : MonoBehaviour
     private BallRotator DetectRotator()
     {
         Collider2D[] detectedRotators = Physics2D.OverlapCircleAll(transform.position, rotatorDetectRadius, RotatorLayer);
+        
+
+
+        Debug.DrawLine(transform.position, transform.position + Vector3.left * rotatorDetectRadius, Color.red, 5f);
+        Debug.DrawLine(transform.position, transform.position + Vector3.up * rotatorDetectRadius, Color.red, 5f);
+        Debug.DrawLine(transform.position, transform.position + Vector3.right * rotatorDetectRadius, Color.red, 5f);
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * rotatorDetectRadius, Color.red, 5f);
+        
         if (detectedRotators.Length <= 0)
             return null;
 

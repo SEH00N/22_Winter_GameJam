@@ -24,7 +24,7 @@ public class Background : MonoBehaviour
         colors[0] = foregroundRenderer.color;
     }
 
-    public void Reset()
+    public void Init()
     {
         if(seq.active)
             seq.Kill();
