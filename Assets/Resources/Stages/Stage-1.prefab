@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3479479780701478643}
   - component: {fileID: 6764472554510171974}
+  - component: {fileID: 6330823640330713068}
   - component: {fileID: 2631042112953413305}
   - component: {fileID: 9173250339987743029}
   - component: {fileID: 3474777291680352401}
@@ -49,6 +50,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   speed: 12
+--- !u!114 &6330823640330713068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861670863308109703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404761f9ff8702e4e80d6711a61ba4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &2631042112953413305
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -148,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1366294014117246376}
   - component: {fileID: -3156521390041664976}
-  - component: {fileID: 1232519760}
+  - component: {fileID: 7999136446517304028}
   m_Layer: 0
   m_Name: Stage-1
   m_TagString: Untagged
@@ -187,7 +200,7 @@ MonoBehaviour:
   doInit: 0
   rotatorDetectRadius: 10
   stageIndex: -1
---- !u!114 &1232519760
+--- !u!114 &7999136446517304028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3340038537127105475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2768824fbdb14904298cfdf99aace345, type: 3}
+  m_Script: {fileID: 11500000, guid: debba62c8e2ebeb4f820996b075d6996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ySize: 40

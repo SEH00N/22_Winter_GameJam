@@ -13,7 +13,7 @@ public class IntroMenu : MonoBehaviour
         GameObject.Find("BallRotator").GetComponent<BallRotator>().Init(rotateRadius);
         GameObject.Find("Ball").GetComponent<BallController>().Init(rotateRadius);
 
-        blockImage.color = Color.black;
+        // blockImage.color = Color.black;
     }
     
     public void StartGame(float interval)

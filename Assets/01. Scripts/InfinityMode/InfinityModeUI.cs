@@ -28,6 +28,11 @@ public class InfinityModeUI : MonoBehaviour
         exitButton = exitObject.transform.Find("ExitButton").GetComponent<Button>();
     }
 
+    private void Start()
+    {
+        InactiveImmediately();
+    }
+
     public void Init(int score)
     {
         scoreText.text = $"SCORE\n{score}";
@@ -57,7 +62,7 @@ public class InfinityModeUI : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         
         restartButton.interactable = false;
-        exitButton.interactable = true;
+        exitButton.interactable = false;
 
         seq.AppendInterval(0.3f);
         seq.Append(endingText.transform.DOMoveY(endingText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));

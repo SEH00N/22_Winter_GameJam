@@ -29,6 +29,8 @@ public class Gimmick : PoolableMono
     {
         if(other.CompareTag("Player"))
         {
+            manager.AddScore();
+
             manager.SpawnGimmick();
             col2d.enabled = false;
         }

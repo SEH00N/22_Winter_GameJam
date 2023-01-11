@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793f68e32a351a2479a50863fcb0b70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doInit: 1
   rotatorDetectRadius: 3
   stageIndex: 0
 --- !u!1 &249634215492157338
@@ -2315,6 +2316,7 @@ GameObject:
   - component: {fileID: 8105408214430627075}
   - component: {fileID: 8105408214430627073}
   - component: {fileID: 8105408214430627087}
+  - component: {fileID: 2306484650271323981}
   m_Layer: 7
   m_Name: Ball
   m_TagString: Untagged
@@ -2440,3 +2442,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2306484650271323981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105408214430627077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e67102d96a5f83428d9d39b1b57c6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

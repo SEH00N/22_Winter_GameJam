@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 1864123766}
   - component: {fileID: 1864123767}
   m_Layer: 5
-  m_Name: EndingUI
+  m_Name: InfinityModeEndingUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

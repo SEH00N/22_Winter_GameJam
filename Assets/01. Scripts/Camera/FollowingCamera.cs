@@ -7,14 +7,21 @@ public class FollowingCamera : MonoBehaviour
     [SerializeField] private float movedDistance = 0f;
 
     private Background background = null;
+    private GameObject confiner = null;
+
+    private bool active = false;
 
     private void Awake()
     {
         background = FindObjectOfType<Background>();
+        confiner = transform.GetChild(0).gameObject;
     }
 
     private void Update()
     {
+        if(active == false)
+            return;
+
         float moveAmount = Time.deltaTime * speed;
         transform.position += new Vector3(0, moveAmount, 0);
 
@@ -25,5 +32,17 @@ public class FollowingCamera : MonoBehaviour
             movedDistance = 0f;
             background.SetRandomColor();
         }
+    }
+
+    public void Active(bool active)
+    {
+        this.active = active;
+        confiner.SetActive(active);
+    }
+
+    public void Reset()
+    {
+        background.Reset();
+        transform.position = new Vector3(0, 0, -10f);
     }
 }
