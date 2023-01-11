@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ecac624080434224081e7c89be5638cf, type: 2}
-  m_sharedMaterial: {fileID: -5128128154087494114, guid: ecac624080434224081e7c89be5638cf, type: 2}
+  m_sharedMaterial: {fileID: -8362164002253489028, guid: ecac624080434224081e7c89be5638cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -273,7 +273,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &3474777291680352401
 CircleCollider2D:
   m_ObjectHideFlags: 0

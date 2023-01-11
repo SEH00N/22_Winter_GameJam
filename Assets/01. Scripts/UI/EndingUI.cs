@@ -7,10 +7,14 @@ public class EndingUI : MonoBehaviour
 {
     private GameObject background = null;
     private GameObject nextObject = null;
+    private GameObject exitObject = null;
+
     private TextMeshProUGUI endingText = null;
     private TextMeshProUGUI stageText = null;
+
     private StageLoadCallback nextButtonCallback = null;
     private Button nextButton = null;
+    private Button exitButton = null;
 
     private void Awake()
     {
@@ -22,6 +26,9 @@ public class EndingUI : MonoBehaviour
 
         nextButton = nextObject.transform.Find("NextButton").GetComponent<Button>();
         nextButtonCallback = nextButton.GetComponent<StageLoadCallback>();
+
+        exitObject = transform.Find("UI/Exit").gameObject;
+        exitButton = exitObject.transform.Find("ExitButton").GetComponent<Button>();
     }
 
     private void Start()
@@ -45,11 +52,14 @@ public class EndingUI : MonoBehaviour
 
         seq.AppendInterval(0.3f);
         seq.Append(nextObject.transform.DOMoveY(nextObject.transform.position.y - 1920f, 0.3f).SetEase(Ease.Linear));
+        seq.Join(exitObject.transform.DOMoveY(exitObject.transform.position.y - 1920f, 0.3f).SetEase(Ease.Linear));
         seq.Append(stageText.transform.DOMoveY(stageText.transform.position.y - 1920f, 0.3f).SetEase(Ease.Linear));
         seq.Append(endingText.transform.DOMoveY(endingText.transform.position.y - 1920f, 0.3f).SetEase(Ease.Linear))
             .AppendInterval(0.3f)
             .AppendCallback(() => {
                 nextButton.interactable = true;
+                exitButton.interactable = true;
+
                 seq.Kill();
             });
     }
@@ -60,11 +70,13 @@ public class EndingUI : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         
         nextButton.interactable = false;
+        exitButton.interactable = true;
 
         seq.AppendInterval(0.3f);
         seq.Append(endingText.transform.DOMoveY(endingText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
         seq.Append(stageText.transform.DOMoveY(stageText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
-        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear))
+        seq.Append(nextObject.transform.DOMoveY(nextObject.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
+        seq.Join(exitObject.transform.DOMoveY(exitObject.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear))
             .AppendInterval(0.3f)
             .AppendCallback(() => {
                 background.SetActive(false);
@@ -75,10 +87,13 @@ public class EndingUI : MonoBehaviour
     public void InactiveImmediately()
     {
         nextButton.interactable = false;
+        exitButton.interactable = false;
+        
         background.SetActive(false);
 
         endingText.transform.position = new Vector3(endingText.transform.position.x, endingText.transform.position.y + 1920f);
         stageText.transform.position = new Vector3(stageText.transform.position.x, stageText.transform.position.y + 1920f);
         nextObject.transform.position = new Vector3(nextObject.transform.position.x, nextObject.transform.position.y + 1920f);
+        exitObject.transform.position = new Vector3(exitObject.transform.position.x, exitObject.transform.position.y + 1920f);
     }
 }

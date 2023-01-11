@@ -27,6 +27,11 @@ public class PlayerDetector : MonoBehaviour
         transform.localScale = Vector3.one * rotatorDetectRadius * 2f;
     }
 
+    private void Start()
+    {
+        Alpha = 0.6f;
+    }
+
     private void Update()
     {
         bool near = IsNear();
@@ -37,7 +42,7 @@ public class PlayerDetector : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        Alpha = Mathf.Lerp(isNear ? 0f : 1f, isNear ? 1f : 0f, timer * fadeSpeed);
+        Alpha = Mathf.Lerp(isNear ? 0f : 0.6f, isNear ? 0.6f : 0f, timer * fadeSpeed);
     }
 
     public bool IsNear() => Physics2D.OverlapCircle(transform.position, rotatorDetectRadius, PlayerLayer);

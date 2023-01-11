@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bafa2ce681b824c44849c6a9fd5ca04b
+guid: b7e93f34a2fa36148aa8b7873266bf63
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Tenada
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bafa2ce681b824c44849c6a9fd5ca04b, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
