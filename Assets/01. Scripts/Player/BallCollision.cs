@@ -6,8 +6,11 @@ public class BallCollision : MonoBehaviour
 {
     private BallController ballController = null;
 
+    private AudioSource diePlayer = null;
+
     private void Awake()
     {
+        diePlayer = transform.Find("DieSoundPlayer").GetComponent<AudioSource>();
         ballController = GetComponent<BallController>();
     }
 
@@ -43,11 +46,8 @@ public class BallCollision : MonoBehaviour
 
     private void DieParticle(Vector2 otherPos)
     {
-        Debug.DrawLine(otherPos, otherPos + Vector2.left * 2f, Color.red, 5f);
-        Debug.DrawLine(otherPos, otherPos + Vector2.up * 2f, Color.red, 5f);
-        Debug.DrawLine(otherPos, otherPos + Vector2.right * 2f, Color.red, 5f);
-        Debug.DrawLine(otherPos, otherPos + Vector2.down * 2f, Color.red, 5f);
-
+        AudioManager.Instance.PlayAudio("Die", diePlayer);
+        
         DieParticle particle = PoolManager.Instance.Pop("DieEffect") as DieParticle;
         Vector3 dir = (otherPos - (Vector2)transform.position).normalized;
         

@@ -18,9 +18,15 @@ public class BallController : MonoBehaviour
     private Vector2 initPos;
     private float rotatorDetectRadius;
 
+    private AudioSource flyPlayer;
+    private AudioSource rotatorPlayer;
+
     public void Init(float rotatorDetectRadius)
     {
         rb2d = GetComponent<Rigidbody2D>();
+
+        flyPlayer = transform.Find("FlySoundPlayer").GetComponent<AudioSource>();
+        rotatorPlayer = transform.Find("RotatorSoundPlayer").GetComponent<AudioSource>();
 
         this.rotatorDetectRadius = rotatorDetectRadius;
 
@@ -67,6 +73,7 @@ public class BallController : MonoBehaviour
     private void Push()
     {
         rb2d.AddForce(transform.up * speed, ForceMode2D.Impulse);
+        AudioManager.Instance.PlayAudio("Fly", flyPlayer);
     }
 
     public void SetRotator()
@@ -78,6 +85,7 @@ public class BallController : MonoBehaviour
 
         rb2d.velocity = Vector2.zero;
         currentRotator.SetBall();
+        AudioManager.Instance.PlayAudio("Catch", rotatorPlayer);
     }
 
     private BallRotator DetectRotator()

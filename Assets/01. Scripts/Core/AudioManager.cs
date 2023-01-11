@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        player.clip = null;
         player.clip = clipPool[clipName];
 
         player.Play();

@@ -29,7 +29,9 @@ public class BallRotator : MonoBehaviour
         deg += Time.deltaTime * 360f * speed;
 
         if(deg >= 360f)
+        {
             deg = 0f;
+        }
 
         float radAngle = deg * Mathf.Deg2Rad;
         float xFactor = Mathf.Cos(radAngle);

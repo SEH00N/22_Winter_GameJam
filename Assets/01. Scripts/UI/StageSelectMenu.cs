@@ -24,6 +24,7 @@ public class StageSelectMenu : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
 
+        AudioManager.Instance.PlaySystem("UISlide");
         seq.Append(blockImage.DOFade(0f, 0.3f));
         seq.Join(transform.DOMoveY(transform.position.y - 2020, 0.5f));
         seq.Append(transform.DOMoveY(transform.position.y - 1920, 0.05f));
@@ -41,7 +42,7 @@ public class StageSelectMenu : MonoBehaviour
         exitButton.interactable = false;
         exitButton.gameObject.SetActive(false);
 
-        seq.Append(transform.DOMoveY(transform.position.y - 100, 0.1f));
+        seq.Append(transform.DOMoveY(transform.position.y - 100, 0.1f).OnComplete(() => AudioManager.Instance.PlaySystem("UISlide")));
         seq.Append(transform.DOMoveY(transform.position.y + 1920, 0.5f));
         seq.Join(blockImage.DOFade(1f, 0.3f));
         seq.AppendCallback(() => seq.Kill() );
