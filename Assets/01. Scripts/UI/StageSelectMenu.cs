@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class StageSelectMenu : MonoBehaviour
 {
     private Image blockImage = null;
+    private Button exitButton = null;
 
     private void Awake()
     {
         blockImage = DEFINE.StaticCanvas.Find("BlockImage").GetComponent<Image>();
+        exitButton = transform.Find("ExitButton").GetComponent<Button>();
         
         InactiveImmediately();
     }
@@ -25,12 +27,19 @@ public class StageSelectMenu : MonoBehaviour
         seq.Append(blockImage.DOFade(0f, 0.3f));
         seq.Join(transform.DOMoveY(transform.position.y - 2020, 0.5f));
         seq.Append(transform.DOMoveY(transform.position.y - 1920, 0.05f));
-        seq.AppendCallback(() => seq.Kill() );
+        seq.AppendCallback(() => {
+            exitButton.interactable = true;
+            exitButton.gameObject.SetActive(true);
+            seq.Kill();
+        });
     }   
 
     public void Inactive()
     {
         Sequence seq = DOTween.Sequence();
+
+        exitButton.interactable = false;
+        exitButton.gameObject.SetActive(false);
 
         seq.Append(transform.DOMoveY(transform.position.y - 100, 0.1f));
         seq.Append(transform.DOMoveY(transform.position.y + 1920, 0.5f));

@@ -16,7 +16,7 @@ public class DataManager : MonoBehaviour
 
     private string saveFolderPath = "/Save";
 
-    // public UserSetting userSetting = null;
+    public UserSetting userSetting = null;
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class DataManager : MonoBehaviour
 
         if (!Directory.Exists(saveFolderPath)) Directory.CreateDirectory(saveFolderPath);
 
-        // userSetting = InitialData<UserSetting>();
+        userSetting = InitialData<UserSetting>();
     }
 
     #region 에디터용
@@ -38,18 +38,18 @@ public class DataManager : MonoBehaviour
         if(instance != this)
             return;
 
-        // SaveData<UserSetting>(userSetting);
+        SaveData<UserSetting>(userSetting);
     }
     #endregion
 
     #region 빌드용
-    // private void OnApplicationQuit()
-    // {
-    //     if(instance != this)
-    //         return;
+    private void OnApplicationQuit()
+    {
+        if(instance != this)
+            return;
 
-    //     SaveData<UserSetting>(userSetting);
-    // }
+        SaveData<UserSetting>(userSetting);
+    }
     #endregion
 
     private T InitialData<T>() where T : Data, new()

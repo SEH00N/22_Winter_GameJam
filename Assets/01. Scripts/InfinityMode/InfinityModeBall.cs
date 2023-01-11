@@ -13,7 +13,6 @@ public class InfinityModeBall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-            Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("RemoverDetector"))
         {
             if (ballController.Rotator)

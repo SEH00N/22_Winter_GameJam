@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using static DEFINE;
 
@@ -8,17 +9,21 @@ public class InfinityModeManager : MonoBehaviour
     private float yPos = 10f;
 
     private int score = 0;
+    private TextMeshProUGUI scoreText = null;
 
     private InfinityModeUI infinityModeUI = null;
     private FollowingCamera followingCamera = null;
 
     private BallController ballController = null;
 
+
     private void Awake() 
     {
         infinityModeUI = GameObject.Find("Canvas/InfinityModeEndingUI").GetComponent<InfinityModeUI>();
         ballController = transform.Find("Ball").GetComponent<BallController>();
         followingCamera = DEFINE.MainCam.GetComponent<FollowingCamera>();
+
+        scoreText = transform.Find("InfinityModeCanvas/ScoreText").GetComponent<TextMeshProUGUI>();
 
         InitGame();
     }
@@ -29,7 +34,11 @@ public class InfinityModeManager : MonoBehaviour
 
     private void InitGame()
     {
+        scoreText.gameObject.SetActive(true);
+
         score = 0;
+        scoreText.text = $"{score}";
+
         followingCamera.Active(true);
 
         for (int i = 0; i < 3; i++)
@@ -46,10 +55,16 @@ public class InfinityModeManager : MonoBehaviour
         yPos += ySize;
     }
 
-    public void AddScore() => score ++;
+    public void AddScore() 
+    {
+        score ++;
+        scoreText.text = $"{score}";
+    }
 
     public void End()
     {
+        scoreText.gameObject.SetActive(false);
+
         followingCamera.Active(false);
         
         infinityModeUI.Init(score);
