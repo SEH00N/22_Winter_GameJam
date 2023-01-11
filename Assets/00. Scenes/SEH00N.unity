@@ -1725,6 +1725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  speedAccel: 0.1
   cycleDelayDistance: 10
   movedDistance: 0
 --- !u!1 &1951074711
