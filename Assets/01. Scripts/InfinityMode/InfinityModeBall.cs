@@ -3,11 +3,12 @@ using UnityEngine;
 public class InfinityModeBall : MonoBehaviour
 {
     private BallController ballController = null;
-    // private InfinityModeManager manager = null;
+    private InfinityModeManager manager = null;
 
     private void Awake()
     {
         ballController = GetComponent<BallController>();
+        manager = transform.parent.GetComponent<InfinityModeManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -19,7 +20,9 @@ public class InfinityModeBall : MonoBehaviour
             ballController.RemoveRotator();
 
         DieParticle(other.contacts[0].point);
-        //manager.End();
+        manager.End();
+
+        Destroy(gameObject);
     }
 
     private void DieParticle(Vector2 otherPos)
@@ -28,20 +31,5 @@ public class InfinityModeBall : MonoBehaviour
         Vector2 dir = (Vector2)particle.transform.position - otherPos;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         particle.Init(transform.position, Quaternion.Euler(angle, 90, -90));
-    }
-}
-
-public class A
-{
-    //private InfinityModeUI infinityModeUI = null;
-
-    private void Awake()
-    {
-        // infinityModeUI = GameObject.Find("Canvas/InfinityModeUI").GetComponent<InfinityModeBall>();
-    }
-
-    public void End()
-    {
-        // infinityModeUI.Init();
     }
 }
