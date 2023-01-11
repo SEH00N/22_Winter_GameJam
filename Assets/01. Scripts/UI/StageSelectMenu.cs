@@ -49,6 +49,9 @@ public class StageSelectMenu : MonoBehaviour
 
     public void InactiveImmediately()
     {
+        exitButton.interactable = false;
+        exitButton.gameObject.SetActive(false);
+
         transform.position = new Vector3(transform.position.x, transform.position.y + 1920);
         blockImage.color = new Color(blockImage.color.r, blockImage.color.g, blockImage.color.b, 1f);
     }
