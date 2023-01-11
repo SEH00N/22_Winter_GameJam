@@ -15,25 +15,17 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    private float x;
-    private float y;
+    private float X => MainCam.orthographicSize * Screen.width / Screen.height;
+    private float Y => MainCam.orthographicSize;
 
-    public float Bottom => MainCam.transform.position.y - y;
-    public float Top => MainCam.transform.position.y + y;
-    public float Left => MainCam.transform.position.x - x;
-    public float Right => MainCam.transform.position.x + x;
+    public float Bottom => MainCam.transform.position.y - Y;
+    public float Top => MainCam.transform.position.y + Y;
+    public float Left => MainCam.transform.position.x - X;
+    public float Right => MainCam.transform.position.x + X;
 
     private CinemachineVirtualCamera cmMainCam = null;
     private CinemachineBasicMultiChannelPerlin perlin = null;
     private bool onShake = false;
-
-    private void Awake()
-    {
-        // perlin = cmMainCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
-        y = MainCam.orthographicSize;
-        x = MainCam.orthographicSize * Screen.width / Screen.height;
-    }
 
     private void Start()
     {

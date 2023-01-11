@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using System;
 using UnityEngine;
 
 public class BallCollision : MonoBehaviour
@@ -41,9 +43,16 @@ public class BallCollision : MonoBehaviour
 
     private void DieParticle(Vector2 otherPos)
     {
+        Debug.DrawLine(otherPos, otherPos + Vector2.left * 2f, Color.red, 5f);
+        Debug.DrawLine(otherPos, otherPos + Vector2.up * 2f, Color.red, 5f);
+        Debug.DrawLine(otherPos, otherPos + Vector2.right * 2f, Color.red, 5f);
+        Debug.DrawLine(otherPos, otherPos + Vector2.down * 2f, Color.red, 5f);
+
         DieParticle particle = PoolManager.Instance.Pop("DieEffect") as DieParticle;
-        Vector2 dir = (Vector2)particle.transform.position - otherPos;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        particle.Init(transform.position, Quaternion.Euler(angle, 90, -90));
+        Vector3 dir = (otherPos - (Vector2)transform.position).normalized;
+        
+        float rad = MathF.Atan2(dir.y, dir.x);
+        float deg = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        particle.Init(otherPos, Quaternion.Euler(0f, 0f, deg + 90f));
     }
 }

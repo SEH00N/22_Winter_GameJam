@@ -23,6 +23,7 @@ public class FollowingCamera : MonoBehaviour
     private void Start()
     {
         currentSpeed = speed;
+        confiner.SetActive(false);
     }
 
     private void Update()

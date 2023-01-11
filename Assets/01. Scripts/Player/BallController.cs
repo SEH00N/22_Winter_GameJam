@@ -84,13 +84,6 @@ public class BallController : MonoBehaviour
     {
         Collider2D[] detectedRotators = Physics2D.OverlapCircleAll(transform.position, rotatorDetectRadius, RotatorLayer);
         
-
-
-        Debug.DrawLine(transform.position, transform.position + Vector3.left * rotatorDetectRadius, Color.red, 5f);
-        Debug.DrawLine(transform.position, transform.position + Vector3.up * rotatorDetectRadius, Color.red, 5f);
-        Debug.DrawLine(transform.position, transform.position + Vector3.right * rotatorDetectRadius, Color.red, 5f);
-        Debug.DrawLine(transform.position, transform.position + Vector3.down * rotatorDetectRadius, Color.red, 5f);
-        
         if (detectedRotators.Length <= 0)
             return null;
 
