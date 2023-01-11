@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4800683968528550184}
   - component: {fileID: 4800683968528550187}
   - component: {fileID: 4800683968528550186}
+  - component: {fileID: 7050356726363486241}
   m_Layer: 0
   m_Name: DieEffect
   m_TagString: Untagged
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4800683968528550189}
-  m_LocalRotation: {x: -0.6483924, y: 0.28211236, z: -0.2821124, w: 0.6483923}
+  m_LocalRotation: {x: 0.68939775, y: -0.15726028, z: 0.15726028, w: -0.68939775}
   m_LocalPosition: {x: -11.43, y: -19.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -42.973, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: -424.3, y: 90, z: -90}
 --- !u!198 &4800683968528550187
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4870,3 +4871,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7050356726363486241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800683968528550189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e5a4f5cea224a48adffb9e3438d2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 10
