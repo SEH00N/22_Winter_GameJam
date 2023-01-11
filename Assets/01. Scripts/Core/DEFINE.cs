@@ -35,14 +35,4 @@ public static class DEFINE
             return mainCam;
         }
     }
-
-    private static CinemachineVirtualCamera cmMainCam = null;
-    public static CinemachineVirtualCamera CmMainCam  {
-        get {
-            if(cmMainCam == null)
-                cmMainCam = GameObject.Find("CmMainCam").GetComponent<CinemachineVirtualCamera>();
-
-            return cmMainCam;
-        }
-    }
 }
