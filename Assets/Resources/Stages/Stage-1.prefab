@@ -213,11 +213,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debba62c8e2ebeb4f820996b075d6996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ySize: 40
+  gap: 10
   stageName:
   - {fileID: 7858259192805565406, guid: 271626c2139ef4e4cb97f8c1e91a7497, type: 3}
-  - {fileID: 1319887030965573613, guid: 37af21d379b8d0e488f3d2405eba35e9, type: 3}
+  - {fileID: 845514751652490540, guid: cc755d99159dabc46a9037cb207a4ad6, type: 3}
   - {fileID: 845514751652490540, guid: c742b9a4b20c0b242a41ab563b197dbf, type: 3}
+  - {fileID: 845514751652490540, guid: d77b9d583580c1b49a61415433ce6629, type: 3}
+  - {fileID: 845514751652490540, guid: 593dd493bc718854abe7a048d4f88ad8, type: 3}
+  - {fileID: 355119873643821519, guid: 034374b90774e2140a807ed0206a5023, type: 3}
+  - {fileID: 8716359853281943619, guid: 92265dce871e141478d212c6b4f66acc, type: 3}
+  - {fileID: 1203169269871024082, guid: 59a186aee929efa4f87d0f69842ffaf6, type: 3}
+  - {fileID: 8795640520020059168, guid: 94b65af795d12be4b969733a68ded5b2, type: 3}
+  - {fileID: 7233895071521788224, guid: 5b8add9909fa19044bc003b70bc17b52, type: 3}
 --- !u!1 &9087237011386840663
 GameObject:
   m_ObjectHideFlags: 0

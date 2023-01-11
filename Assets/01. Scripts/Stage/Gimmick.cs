@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Gimmick : PoolableMono
 {
-    [SerializeField] float height;
+    public float height;
     private InfinityModeManager manager = null;
 
     private List<BallRotator> rotators = new List<BallRotator>();
