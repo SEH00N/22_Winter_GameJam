@@ -215,9 +215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ySize: 40
   stageName:
-  - Stage1
-  - Stage2
-  - Stage3
+  - {fileID: 7858259192805565406, guid: 271626c2139ef4e4cb97f8c1e91a7497, type: 3}
+  - {fileID: 1319887030965573613, guid: 37af21d379b8d0e488f3d2405eba35e9, type: 3}
+  - {fileID: 845514751652490540, guid: c742b9a4b20c0b242a41ab563b197dbf, type: 3}
 --- !u!1 &9087237011386840663
 GameObject:
   m_ObjectHideFlags: 0

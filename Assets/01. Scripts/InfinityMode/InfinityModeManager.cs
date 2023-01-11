@@ -4,7 +4,7 @@ using static DEFINE;
 public class InfinityModeManager : MonoBehaviour
 {
     [SerializeField] float ySize;
-    [SerializeField] string[] stageName;
+    [SerializeField] Gimmick[] stageName;
     private float yPos = 10f;
 
     private int score = 0;
