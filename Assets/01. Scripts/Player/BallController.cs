@@ -10,10 +10,12 @@ public class BallController : MonoBehaviour
     private Rigidbody2D rb2d = null;
 
     private BallRotator currentRotator = null;
-    private BallRotator lastRotator = null;
     public bool Rotator => currentRotator != null;
 
-    private Vector2 InitPos;
+    private BallRotator lastRotator = null;
+    public BallRotator LastRotator => lastRotator;
+
+    private Vector2 initPos;
     private float rotatorDetectRadius;
 
     public void Init(float rotatorDetectRadius)
@@ -22,23 +24,25 @@ public class BallController : MonoBehaviour
 
         this.rotatorDetectRadius = rotatorDetectRadius;
 
-        InitPos = transform.position;
+        initPos = transform.position;
     }
-    private void PosReset(){
-        transform.position = InitPos;
+
+    public void PosReset()
+    {
+        transform.position = initPos;
         SetRotator();
-    }   
+    }
 
     private void Start()
     {
         SetRotator();
         rb2d.velocity = Vector2.zero;
-        transform.position = InitPos;
+        transform.position = initPos;
     }
 
     private void Update()
     {
-        if(active == false) return;
+        if (active == false) return;
 
         // if(Input.GetTouch(0).phase == TouchPhase.Ended)
         // {
@@ -47,9 +51,9 @@ public class BallController : MonoBehaviour
         //     else
         //         SetRotator();
         // }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(Rotator)
+            if (Rotator)
                 RemoveRotator();
             else
                 SetRotator();
@@ -74,7 +78,7 @@ public class BallController : MonoBehaviour
     {
         currentRotator = DetectRotator();
 
-        if(currentRotator == null)
+        if (currentRotator == null)
             return;
 
         rb2d.velocity = Vector2.zero;
@@ -84,7 +88,7 @@ public class BallController : MonoBehaviour
     private BallRotator DetectRotator()
     {
         Collider2D[] detectedRotators = Physics2D.OverlapCircleAll(transform.position, rotatorDetectRadius, RotatorLayer);
-        if(detectedRotators.Length <= 0)
+        if (detectedRotators.Length <= 0)
             return null;
 
         detectedRotators = (
@@ -96,31 +100,5 @@ public class BallController : MonoBehaviour
         BallRotator targetRotator = detectedRotators[0].GetComponent<BallRotator>();
 
         return targetRotator;
-    }
-    private void  OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Wall")||other.gameObject.CompareTag("FinishRotator")){
-            if(Rotator)
-                RemoveRotator();
-            DieParticle particle = PoolManager.Instance.Pop("DieEffect") as DieParticle;
-            Vector2 dir = (Vector2)particle.transform.position - other.contacts[0].point;
-            float angle =Mathf.Atan2(dir.y,dir.x)*Mathf.Rad2Deg;
-            particle.Init(transform.position,Quaternion.Euler(angle,90,-90));
-            PosReset();
-        }
-        if(other.gameObject.CompareTag("ClearWall")){
-            if(lastRotator.gameObject.CompareTag("FinishRotator")){
-                StageManager.Instance.EndingUiInit();
-                StageManager.Instance.EndingUI.Active();
-            }else{
-                if(Rotator)
-                RemoveRotator();
-            DieParticle particle = PoolManager.Instance.Pop("DieEffect") as DieParticle;
-            Vector2 dir = (Vector2)particle.transform.position - other.contacts[0].point;
-            float angle =Mathf.Atan2(dir.y,dir.x)*Mathf.Rad2Deg;
-            particle.Init(transform.position,Quaternion.Euler(angle,90,-90));
-            PosReset();
-            }
-        }
     }
 }
