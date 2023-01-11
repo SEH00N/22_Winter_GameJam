@@ -72,7 +72,6 @@ public class BallController : MonoBehaviour
     public void SetRotator()
     {
         currentRotator = DetectRotator();
-        Debug.Log(currentRotator);
 
         if (currentRotator == null)
             return;

@@ -8,6 +8,7 @@ TagManager:
   - FinishRotator
   - ClearWall
   - Walll
+  - RemoverDetector
   layers:
   - Default
   - TransparentFX

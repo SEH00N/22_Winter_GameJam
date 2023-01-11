@@ -13,16 +13,17 @@ public class InfinityModeBall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!other.gameObject.CompareTag("Wall"))
-            return;
+            Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("RemoverDetector"))
+        {
+            if (ballController.Rotator)
+                ballController.RemoveRotator();
 
-        if (ballController.Rotator)
-            ballController.RemoveRotator();
+            DieParticle(other.contacts[0].point);
+            manager.End();
 
-        DieParticle(other.contacts[0].point);
-        manager.End();
-
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     private void DieParticle(Vector2 otherPos)
