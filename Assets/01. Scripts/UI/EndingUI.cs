@@ -11,6 +11,7 @@ public class EndingUI : MonoBehaviour
     private TextMeshProUGUI stageText = null;
     private StageLoadCallback nextButtonCallback = null;
     private Button nextButton = null;
+    private Button exitButton = null;
 
     private void Awake()
     {

@@ -29,7 +29,6 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
-        cmMainCam = DEFINE.CmMainCam;
         // perlin = cmMainCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         y = MainCam.orthographicSize;
