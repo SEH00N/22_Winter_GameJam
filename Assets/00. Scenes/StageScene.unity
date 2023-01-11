@@ -1333,7 +1333,7 @@ MonoBehaviour:
   - {r: 0.7264151, g: 0.33168387, b: 0.33168387, a: 0}
   - {r: 0.26415092, g: 0.22776787, b: 0.22776787, a: 0}
   - {r: 0.5946686, g: 0.8584906, b: 0.48107865, a: 0}
-  colorChangeDuration: 1
+  colorChangeDuration: 3
   opacity: 38
 --- !u!212 &607221206
 SpriteRenderer:
@@ -4187,7 +4187,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 2352b63c00000000c988cbf4
+  m_ApplyToSortingLayers: 2352b63c00000000c988cbf4ff65aa24
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -4547,8 +4547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  speedAccel: 0.1
-  cycleDelayDistance: 1
+  speedAccel: 0.05
+  cycleDelayDistance: 5
   movedDistance: 0
 --- !u!1 &2126493613
 GameObject:

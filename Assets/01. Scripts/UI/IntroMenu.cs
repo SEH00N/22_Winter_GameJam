@@ -12,7 +12,7 @@ public class IntroMenu : MonoBehaviour
     {
         blockImage = DEFINE.StaticCanvas.Find("BlockImage").GetComponent<Image>();
         GameObject.Find("BallRotator").GetComponent<BallRotator>().Init(rotateRadius);
-        GameObject.Find("Ball").GetComponent<BallController>().Init(rotateRadius);
+        // GameObject.Find("Ball").GetComponent<BallController>().Init(rotateRadius);
 
         // blockImage.color = Color.black;
     }

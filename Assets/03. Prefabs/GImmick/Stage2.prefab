@@ -1071,7 +1071,6 @@ GameObject:
   - component: {fileID: 5549348394828538115}
   - component: {fileID: 1319887030965573613}
   - component: {fileID: 1312256127323477868}
-  - component: {fileID: 5276444770802813844}
   m_Layer: 0
   m_Name: Stage2
   m_TagString: Untagged
@@ -1141,27 +1140,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 24.386055, y: 1.8306494}
   m_EdgeRadius: 0
---- !u!50 &5276444770802813844
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5549348394828538114}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &5549348395698433545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,6 +1690,7 @@ GameObject:
   - component: {fileID: 3445420638343174053}
   - component: {fileID: 1167757702303771780}
   - component: {fileID: 6795821829779536929}
+  - component: {fileID: 1340916481742146664}
   m_Layer: 0
   m_Name: RemoverDetector
   m_TagString: Untagged
@@ -1824,3 +1803,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1340916481742146664
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7695545489094504105}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

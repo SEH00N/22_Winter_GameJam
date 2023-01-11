@@ -916,6 +916,7 @@ GameObject:
   - component: {fileID: 1142517830519445813}
   - component: {fileID: 4215919719529030815}
   - component: {fileID: 3698701820896737819}
+  - component: {fileID: 4793185873048058887}
   m_Layer: 0
   m_Name: RemoverDetector
   m_TagString: Untagged
@@ -1028,6 +1029,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &4793185873048058887
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418926329970442710}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8478133118733272286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1735,6 @@ GameObject:
   - component: {fileID: 8478133120450280549}
   - component: {fileID: 6416968790319793988}
   - component: {fileID: -6078881585866693671}
-  - component: {fileID: 5501754320899660169}
   m_Layer: 0
   m_Name: Stage4
   m_TagString: Untagged
@@ -1785,27 +1806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c18d0270d71654eb9ef6b00ad10ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &5501754320899660169
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8478133120450280548}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &8478133120558085203
 GameObject:
   m_ObjectHideFlags: 0
