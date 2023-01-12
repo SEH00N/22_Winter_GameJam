@@ -21,7 +21,7 @@ public class InfinityModeManager : MonoBehaviour
         infinityModeUI = GameObject.Find("Canvas/InfinityModeEndingUI").GetComponent<InfinityModeUI>();
         followingCamera = DEFINE.MainCam.GetComponent<FollowingCamera>();
 
-        scoreText = transform.Find("InfinityModeCanvas/ScoreText").GetComponent<TextMeshProUGUI>();
+        scoreText = GameObject.Find("Canvas").transform.Find("InfinityModeScoreText/Text").GetComponent<TextMeshProUGUI>();
 
         InitGame();
         Ball.Init(4f);
