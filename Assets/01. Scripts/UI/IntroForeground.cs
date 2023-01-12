@@ -1,25 +1,23 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-public class IntroLight : MonoBehaviour
+public class IntroForeground : MonoBehaviour
 {
     [SerializeField] List<Color> colors = new List<Color>();
-    [SerializeField] float speed = 3f;
-    private float deg = 0f;
+    [SerializeField] float cycleDelay = 0.25f;
+    [SerializeField] float alpha = 0.3f;
 
-    [SerializeField] float cycleDelay = 0.5f;
-    private Light2D light2D = null;
-    private float timer = 10f;
+    private float timer = 0f;
+    private int currentIndex = 0;
 
+    private SpriteRenderer spriteRenderer = null;
     private Color targetColor = Color.white;
     private Color beforColor = Color.white;
 
-    private int currentIndex = 0;
-
     private void Awake()
     {
-        light2D = transform.GetChild(0).GetComponent<Light2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
     }
 
     private void Start()
@@ -29,19 +27,15 @@ public class IntroLight : MonoBehaviour
 
     private void Update()
     {
-        deg += Time.deltaTime * speed * 360f;
-
-        transform.rotation = Quaternion.AngleAxis(deg, Vector3.forward);
-
         timer += Time.deltaTime;
         Color tempColor = Vector4.Lerp(beforColor, targetColor, timer / cycleDelay);
-        tempColor.a = 1f;
-        light2D.color = tempColor;
+        tempColor.a = alpha;
+        spriteRenderer.color = tempColor;
 
         if(timer >= cycleDelay)
         {
             timer = 0f;
-            beforColor = light2D.color;
+            beforColor = spriteRenderer.color;
 
             currentIndex = (currentIndex + 1) % colors.Count;            
             targetColor = colors[currentIndex];

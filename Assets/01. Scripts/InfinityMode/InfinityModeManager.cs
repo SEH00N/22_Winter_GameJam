@@ -34,7 +34,7 @@ public class InfinityModeManager : MonoBehaviour
         score = 0;
         scoreText.text = $"{score}";
 
-        followingCamera.Active(true);
+        followingCamera.Active();
 
         for (int i = 0; i < 3; i++)
             SpawnGimmick();
@@ -60,7 +60,7 @@ public class InfinityModeManager : MonoBehaviour
     {
         scoreText.gameObject.SetActive(false);
 
-        followingCamera.Active(false);
+        followingCamera.Stop();
         
         infinityModeUI.Init(score);
         infinityModeUI.Active();
