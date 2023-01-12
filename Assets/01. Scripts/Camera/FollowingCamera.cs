@@ -1,11 +1,11 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class FollowingCamera : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
+    [SerializeField] float maxSpeed = 20f;
     [SerializeField] float speedAccel = 0.1f;
-    [SerializeField] float cycleDelayDistance = 10f;
-    [SerializeField] private float movedDistance = 0f;
 
     private float currentSpeed = 0f;
 
@@ -35,20 +35,21 @@ public class FollowingCamera : MonoBehaviour
         transform.position += new Vector3(0, moveAmount, 0);
 
         currentSpeed += speedAccel * Time.deltaTime;
-
-        movedDistance += moveAmount;
-
-        if(movedDistance >= cycleDelayDistance)
-        {
-            movedDistance = 0f;
-            background.SetRandomColor();
-        }
+        currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
     }
 
-    public void Active(bool active)
+    public void Active()
     {
-        this.active = active;
-        confiner.SetActive(active);
+        this.active = true;
+        confiner.SetActive(true);
+        background.SetColor();
+    }
+
+    public void Stop()
+    {
+        this.active = false;
+        confiner.SetActive(false);
+        background.Stop();
     }
 
     public void Init()

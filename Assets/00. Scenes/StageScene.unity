@@ -911,7 +911,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.39
+  m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 2352b63c
@@ -1379,11 +1379,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0.7490196, g: 0.95686275, b: 1, a: 0}
   - {r: 0.7264151, g: 0.33168387, b: 0.33168387, a: 0}
-  - {r: 0.26415092, g: 0.22776787, b: 0.22776787, a: 0}
-  - {r: 0.5946686, g: 0.8584906, b: 0.48107865, a: 0}
-  colorChangeDuration: 3
+  - {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 0}
+  - {r: 1, g: 0.26666668, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0.5882353, g: 0.58431375, b: 0.47843137, a: 0}
+  defaultColor: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 1}
+  cycleDelay: 5
   opacity: 38
 --- !u!212 &607221206
 SpriteRenderer:
@@ -1426,7 +1429,7 @@ SpriteRenderer:
   m_SortingLayerID: 1018581539
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1bbf4f9a05987dc4b9c1e1fc412a8f88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e46d9ff70ce123b4190b5d3be26368d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3334,7 +3337,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.5283019, g: 0.34588823, b: 0.34588823, a: 0.38039216}
+  m_Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.38039216}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3711,6 +3714,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515948258}
   m_CullTransparentMesh: 1
+--- !u!1 &1633898995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633898996}
+  m_Layer: 5
+  m_Name: InGameExitButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1633898996
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633898995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1693672113}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1636901888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3769,7 +3808,7 @@ SpriteRenderer:
   m_SortingLayerID: 1018581539
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1959f6d89547f894fa3db9046ae0c9c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e906f42905a33ed45906b4fb448250f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4028,6 +4067,7 @@ RectTransform:
   - {fileID: 1717193735}
   - {fileID: 706545299}
   - {fileID: 2004313116}
+  - {fileID: 1633898996}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5195,9 +5235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  maxSpeed: 20
   speedAccel: 0.05
-  cycleDelayDistance: 5
-  movedDistance: 0
 --- !u!1 &2126493613
 GameObject:
   m_ObjectHideFlags: 0
