@@ -1,5 +1,7 @@
+using System.Xml.Serialization;
 using System.IO;
 using Newtonsoft.Json;
+using TMPro;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -20,8 +22,7 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        saveFolderPath = Path.Combine(Application.persistentDataPath, saveFolderPath);
-
+        saveFolderPath = Application.persistentDataPath + saveFolderPath;
         if(instance != null)
             return;
 
@@ -31,26 +32,6 @@ public class DataManager : MonoBehaviour
 
         userSetting = InitialData<UserSetting>();
     }
-
-    #region 에디터용
-    private void OnDestroy()
-    {
-        if(instance != this)
-            return;
-
-        SaveData<UserSetting>(userSetting);
-    }
-    #endregion
-
-    #region 빌드용
-    private void OnApplicationQuit()
-    {
-        if(instance != this)
-            return;
-
-        SaveData<UserSetting>(userSetting);
-    }
-    #endregion
 
     private T InitialData<T>() where T : Data, new()
     {
@@ -86,11 +67,13 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    private void SaveData<T>(T data) where T : Data
+    public void SaveData<T>(T data) where T : Data
     {
         data.Save();
 
         string json = JsonConvert.SerializeObject(data);
+        Debug.Log(json);
+        Debug.Log(GetPath<T>());
 
         File.WriteAllText(GetPath<T>(), json);
     }

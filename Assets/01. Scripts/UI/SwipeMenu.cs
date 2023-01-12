@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,9 @@ public class SwipeMenu : MonoBehaviour
     private float scrollPos = 0f;
     private float distance;
 
+    private float tempDelay = 0.3f;
+    private float timer = 0f;
+
     private void Awake()
     {
         pos = new float[transform.childCount];
@@ -22,9 +27,9 @@ public class SwipeMenu : MonoBehaviour
 
     private void Update()
     {
-        if((Input.touchCount > 0) || Input.GetMouseButton(0))
-            scrollPos = scrollbar.value;
-        else
+        if(Input.touches.Length > 0 || Input.GetMouseButtonDown(0))
+            timer = 0f;
+        if(timer >= tempDelay)
         {
             for(int i = 0; i < pos.Length; i ++)
             {
@@ -42,5 +47,9 @@ public class SwipeMenu : MonoBehaviour
                 }
             }
         }
+        else
+            scrollPos = scrollbar.value;
+
+        timer += Time.deltaTime;
     }
 }

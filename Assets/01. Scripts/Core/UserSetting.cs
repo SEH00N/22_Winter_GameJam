@@ -2,12 +2,12 @@
 public class UserSetting : Data
 {
     public bool isMute = false;
-    public int maxScore = 0;
+    public int bestScore = 0;
 
     public override void Generate()
     {
         isMute = false;
-        maxScore = 0;
+        bestScore = 0;
     }
 
     public override bool IsNull() => false;

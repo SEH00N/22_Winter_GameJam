@@ -15,6 +15,8 @@ public class InfinityModeUI : MonoBehaviour
     private Button restartButton = null;
     private Button exitButton = null;
 
+    private UserSetting userSetting = null;
+
     private void Awake()
     {
         background = transform.Find("Background").gameObject;
@@ -31,11 +33,20 @@ public class InfinityModeUI : MonoBehaviour
     private void Start()
     {
         InactiveImmediately();
+
+        userSetting = DataManager.Instance.userSetting;
     }
 
     public void Init(int score)
     {
-        scoreText.text = $"SCORE\n{score}";
+        int bestScore = DataManager.Instance.userSetting.bestScore;
+        bestScore = Mathf.Max(score, bestScore);
+
+        userSetting.bestScore = bestScore;
+
+        scoreText.text = $"SCORE\n{score}\n\nBESTSCORE\n{bestScore}";
+
+        DataManager.Instance.SaveData<UserSetting>(userSetting);
     }
 
     public void Active()
