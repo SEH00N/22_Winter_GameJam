@@ -26,14 +26,14 @@ public class Gimmick : PoolableMono
         rotators.ForEach(rotator => rotator.Init(rotatorDetectRadius));
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.CompareTag("Player"))
-        {
-            manager.AddScore();
+    // private void OnTriggerEnter2D(Collider2D other) 
+    // {
+    //     if(other.CompareTag("Player"))
+    //     {
+    //         manager.AddScore();
 
-            manager.SpawnGimmick();
-            col2d.enabled = false;
-        }
-    }
+    //         manager.SpawnGimmick();
+    //         col2d.enabled = false;
+    //     }
+    // }
 }

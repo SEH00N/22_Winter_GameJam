@@ -26,7 +26,7 @@ public class InfinityModeManager : MonoBehaviour
     private void Start()
     {
         InitGame();
-        Ball.Init(4f);
+        Ball.Init(4f,this);
     }
 
     private void InitGame()

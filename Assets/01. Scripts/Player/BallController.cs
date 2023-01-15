@@ -17,6 +17,7 @@ public class BallController : MonoBehaviour
 
     private Vector2 initPos;
     private float rotatorDetectRadius;
+    private InfinityModeManager manager = null;
 
     private AudioSource flyPlayer;
     private AudioSource rotatorPlayer;
@@ -25,13 +26,14 @@ public class BallController : MonoBehaviour
     private float holdTimer = 0f;
     private bool onHold = false;
 
-    public void Init(float rotatorDetectRadius)
+    public void Init(float rotatorDetectRadius,InfinityModeManager manager = null)
     {
         rb2d = GetComponent<Rigidbody2D>();
 
         flyPlayer = transform.Find("FlySoundPlayer").GetComponent<AudioSource>();
         rotatorPlayer = transform.Find("RotatorSoundPlayer").GetComponent<AudioSource>();
 
+        this.manager = manager;
         this.rotatorDetectRadius = rotatorDetectRadius;
 
         initPos = transform.position;
@@ -122,11 +124,13 @@ public class BallController : MonoBehaviour
 
     public void SetRotator()
     {
+        Debug.Log(11);
         currentRotator = DetectRotator();
 
         if (currentRotator == null)
             return;
-
+        if(lastRotator != null)
+            manager?.AddScore();
         rb2d.velocity = Vector2.zero;
         currentRotator.SetBall();
         AudioManager.Instance.PlayAudio("Catch", rotatorPlayer);
@@ -147,6 +151,6 @@ public class BallController : MonoBehaviour
 
         BallRotator targetRotator = detectedRotators[0].GetComponent<BallRotator>();
 
-        return targetRotator;
+        return lastRotator == targetRotator ? null: targetRotator;
     }
 }
