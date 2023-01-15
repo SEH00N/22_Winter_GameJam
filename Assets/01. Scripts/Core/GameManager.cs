@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public float rotatorSpeed = 0.5f;
+
     private void Awake()
     {
         if(instance != null) { Debug.LogWarning("Multiple gameManager instance is running, destroy this"); Destroy(gameObject); }

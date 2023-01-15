@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class FollowingCamera : MonoBehaviour
@@ -23,7 +22,7 @@ public class FollowingCamera : MonoBehaviour
     private void Start()
     {
         currentSpeed = speed;
-        confiner.SetActive(false);
+        // confiner.SetActive(false);
     }
 
     private void Update()
@@ -38,24 +37,14 @@ public class FollowingCamera : MonoBehaviour
         currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
     }
 
-    public void Active()
+    public void Active(bool active)
     {
-        this.active = true;
-        confiner.SetActive(true);
-        background.SetColor();
-    }
-
-    public void Stop()
-    {
-        this.active = false;
-        confiner.SetActive(false);
-        background.Stop();
+        this.active = active;
     }
 
     public void Init()
     {
         currentSpeed = speed;
-        background.Init();
         transform.position = new Vector3(0, 0, -10f);
     }
 }

@@ -5,7 +5,6 @@ using static DEFINE;
 public class InfinityModeManager : MonoBehaviour
 {
     [SerializeField] float gap;
-    [SerializeField] Gimmick[] stageName;
     private float yPos = 0f;
 
     private int score = 0;
@@ -14,7 +13,7 @@ public class InfinityModeManager : MonoBehaviour
     private InfinityModeUI infinityModeUI = null;
     private FollowingCamera followingCamera = null;
 
-    private BallController ballController = null;
+    private float rotatorSpeed;
 
     private void Awake() 
     {
@@ -22,7 +21,10 @@ public class InfinityModeManager : MonoBehaviour
         followingCamera = DEFINE.MainCam.GetComponent<FollowingCamera>();
 
         scoreText = GameObject.Find("Canvas").transform.Find("InfinityModeScoreText/Text").GetComponent<TextMeshProUGUI>();
+    }
 
+    private void Start()
+    {
         InitGame();
         Ball.Init(4f);
     }
@@ -34,7 +36,7 @@ public class InfinityModeManager : MonoBehaviour
         score = 0;
         scoreText.text = $"{score}";
 
-        followingCamera.Active();
+        followingCamera.Active(true);
 
         for (int i = 0; i < 3; i++)
             SpawnGimmick();
@@ -42,7 +44,7 @@ public class InfinityModeManager : MonoBehaviour
 
     public void SpawnGimmick()
     {
-        Gimmick gimmick = PoolManager.Instance.Pop(stageName[Random.Range(0, stageName.Length)]) as Gimmick;
+        Gimmick gimmick = PoolManager.Instance.Pop($"Gimmick{Random.Range(1, 20)}") as Gimmick;
 
         gimmick.Init(this, 4f);
         gimmick.transform.position = new Vector3(0f, yPos, 0f);
@@ -60,7 +62,7 @@ public class InfinityModeManager : MonoBehaviour
     {
         scoreText.gameObject.SetActive(false);
 
-        followingCamera.Stop();
+        followingCamera.Active(false);
         
         infinityModeUI.Init(score);
         infinityModeUI.Active();

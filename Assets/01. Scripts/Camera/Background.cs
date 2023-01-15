@@ -25,15 +25,15 @@ public class Background : MonoBehaviour
         foregroundRenderer = transform.Find("Foreground").GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        Active(true);
+    }
+
     public void Init()
     {
         foregroundRenderer.color = defaultColor;
         currentIndex = 0;
-    }
-
-    public void Stop()
-    {
-        changing = false;
     }
 
     private void Update()
@@ -56,8 +56,8 @@ public class Background : MonoBehaviour
         }
     }
 
-    public void SetColor()
+    public void Active(bool active)
     {
-        changing = true;
+        changing = active;
     }
 }

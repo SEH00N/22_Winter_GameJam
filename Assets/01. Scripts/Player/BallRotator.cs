@@ -4,7 +4,6 @@ using UnityEngine;
 public class BallRotator : MonoBehaviour
 {
     [SerializeField] float radius = 10f;
-    [SerializeField] float speed = 5f;
     [SerializeField] float deg = 0f;
 
     private bool active = false;

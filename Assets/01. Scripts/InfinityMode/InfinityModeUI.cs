@@ -80,7 +80,6 @@ public class InfinityModeUI : MonoBehaviour
         seq.Append(scoreText.transform.DOMoveY(scoreText.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
         seq.Append(restartObject.transform.DOMoveY(restartObject.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear));
         seq.Join(exitObject.transform.DOMoveY(exitObject.transform.position.y + 1920f, 0.3f).SetEase(Ease.Linear))
-            .AppendInterval(0.3f)
             .AppendCallback(() => {
                 background.SetActive(false);
                 seq.Kill();

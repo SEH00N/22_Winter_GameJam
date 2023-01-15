@@ -45,23 +45,43 @@ public class BallController : MonoBehaviour
     {
         if (active == false) return;
 
-        if(Input.touches.Length > 0)
+        MobileInput();
+        PCInput();
+    }
+
+    private void MobileInput()
+    {
+        if(Input.touchCount <= 0)
+            return;
+
+        if(Rotator)
         {
-            if(Input.GetTouch(0).phase == TouchPhase.Ended)
+            if(Input.GetTouch(0).phase == TouchPhase.Began)
+                Time.timeScale = 0.5f;
+            else if(Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                if(Rotator)
-                    RemoveRotator();
-                else
-                    SetRotator();
+                Time.timeScale = 1f;
+                RemoveRotator();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if(Input.GetTouch(0).phase == TouchPhase.Ended)
+            SetRotator();
+    }
+
+    private void PCInput()
+    {
+        if(Rotator)
         {
-            if (Rotator)
+            if(Input.GetKeyDown(KeyCode.Space))
+                Time.timeScale = 0.5f;
+            else if(Input.GetKeyUp(KeyCode.Space))
+            {
+                Time.timeScale = 1f;
                 RemoveRotator();
-            else
-                SetRotator();
+            }
         }
+        else if(Input.GetKeyUp(KeyCode.Space))
+            SetRotator();
     }
 
     public void RemoveRotator()
