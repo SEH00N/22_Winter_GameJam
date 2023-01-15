@@ -23,4 +23,9 @@ public class GameManager : MonoBehaviour
 
         Application.targetFrameRate = 50;
     }
+
+    public void ResetSpeed()
+    {
+        rotatorSpeed = 0.4f;
+    }
 }

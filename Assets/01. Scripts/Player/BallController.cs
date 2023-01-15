@@ -21,6 +21,10 @@ public class BallController : MonoBehaviour
     private AudioSource flyPlayer;
     private AudioSource rotatorPlayer;
 
+    [SerializeField] float maxHoldTime = 1f;
+    private float holdTimer = 0f;
+    private bool onHold = false;
+
     public void Init(float rotatorDetectRadius)
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -47,6 +51,15 @@ public class BallController : MonoBehaviour
 
         MobileInput();
         PCInput();
+
+        if(onHold)
+            holdTimer += Time.deltaTime;
+
+        if(holdTimer >= maxHoldTime)
+        {
+            onHold = false;
+            Time.timeScale = 1f;
+        }
     }
 
     private void MobileInput()
@@ -57,10 +70,14 @@ public class BallController : MonoBehaviour
         if(Rotator)
         {
             if(Input.GetTouch(0).phase == TouchPhase.Began)
+            {
                 Time.timeScale = 0.5f;
+                onHold = true;
+            }
             else if(Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 Time.timeScale = 1f;
+                onHold = false;
                 RemoveRotator();
             }
         }
@@ -73,10 +90,14 @@ public class BallController : MonoBehaviour
         if(Rotator)
         {
             if(Input.GetKeyDown(KeyCode.Space))
+            {
                 Time.timeScale = 0.5f;
+                onHold = true;
+            }
             else if(Input.GetKeyUp(KeyCode.Space))
             {
                 Time.timeScale = 1f;
+                onHold = false;
                 RemoveRotator();
             }
         }

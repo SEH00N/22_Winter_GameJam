@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class FollowingCamera : MonoBehaviour
@@ -34,7 +35,12 @@ public class FollowingCamera : MonoBehaviour
         transform.position += new Vector3(0, moveAmount, 0);
 
         currentSpeed += speedAccel * Time.deltaTime;
+
+        float rotatorSpeed = GameManager.Instance.rotatorSpeed;
+        rotatorSpeed += speedAccel * Time.deltaTime * 0.05f;
+
         currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+        GameManager.Instance.rotatorSpeed = Mathf.Min(rotatorSpeed, maxSpeed * 0.1f);
     }
 
     public void Active(bool active)

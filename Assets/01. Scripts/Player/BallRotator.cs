@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BallRotator : MonoBehaviour
@@ -25,7 +24,7 @@ public class BallRotator : MonoBehaviour
 
     private void Rotating()
     {
-        deg += Time.deltaTime * 360f * speed;
+        deg += Time.deltaTime * 360f * GameManager.Instance.rotatorSpeed;
 
         if(deg >= 360f)
         {

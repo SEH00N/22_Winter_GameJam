@@ -31,6 +31,7 @@ public class InfinityModeManager : MonoBehaviour
 
     private void InitGame()
     {
+        GameManager.Instance.ResetSpeed();
         scoreText.gameObject.SetActive(true);
 
         score = 0;
@@ -66,5 +67,7 @@ public class InfinityModeManager : MonoBehaviour
         
         infinityModeUI.Init(score);
         infinityModeUI.Active();
+
+        Time.timeScale = 1f;
     }
 }
