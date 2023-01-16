@@ -5,13 +5,13 @@ using UnityEngine;
 public class ReviveAd : RewardAdBase
 {
     private FollowingCamera followingCamera = null;
+    private BallController ball = null;
 
     protected override void Awake()
     {
         base.Awake();
 
         followingCamera = DEFINE.MainCam.GetComponent<FollowingCamera>();
-        Debug.Log(adId);
     }
 
     public override void HandleOnAdClosed(object sender, EventArgs args)
@@ -46,7 +46,11 @@ public class ReviveAd : RewardAdBase
 
     public override void RewardedCallback(Reward reward)
     {
+        ball = DEFINE.Ball;
         gameObject.SetActive(false);
         followingCamera.Active(true);
+        ball.transform.position = ball.LastRotaterPos;
+        ball.LastRotator = null;
+        ball.gameObject.SetActive(true);
     }
 }

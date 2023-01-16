@@ -13,7 +13,12 @@ public class BallController : MonoBehaviour
     public bool Rotator => currentRotator != null;
 
     private BallRotator lastRotator = null;
-    public BallRotator LastRotator => lastRotator;
+    public BallRotator LastRotator 
+    {
+        get => lastRotator;
+        set => lastRotator = value;}
+    private Vector2 lastRotaterPos;
+    public Vector2 LastRotaterPos => lastRotaterPos;
 
     private Vector2 initPos;
     private float rotatorDetectRadius;
@@ -37,19 +42,18 @@ public class BallController : MonoBehaviour
         this.rotatorDetectRadius = rotatorDetectRadius;
 
         initPos = transform.position;
+        lastRotaterPos = transform.position;
 
         rb2d.velocity = Vector2.zero;        
     }
 
     public void PosReset()
     {
-        transform.position = initPos;
         SetRotator();
     }
 
     private void Update()
     {
-        if (active == false) return;
 
         MobileInput();
         PCInput();
@@ -95,6 +99,7 @@ public class BallController : MonoBehaviour
             {
                 Time.timeScale = 0.5f;
                 onHold = true;
+                Debug.Log("터치");
             }
             else if(Input.GetKeyUp(KeyCode.Space))
             {
@@ -103,15 +108,19 @@ public class BallController : MonoBehaviour
                 RemoveRotator();
             }
         }
-        else if(Input.GetKeyUp(KeyCode.Space))
+        else if(Input.GetKeyUp(KeyCode.Space)){
             SetRotator();
+                Debug.Log("터치");
+    }
     }
 
     public void RemoveRotator()
     {
-        lastRotator = currentRotator;
         currentRotator.RemoveBall();
+        lastRotator = currentRotator;
         currentRotator = null;
+        lastRotaterPos = transform.position;
+
 
         Push();
     }
@@ -124,13 +133,14 @@ public class BallController : MonoBehaviour
 
     public void SetRotator()
     {
-        Debug.Log(11);
         currentRotator = DetectRotator();
+        Debug.Log(currentRotator);
 
         if (currentRotator == null)
             return;
         if(lastRotator != null)
             manager?.AddScore();
+        
         rb2d.velocity = Vector2.zero;
         currentRotator.SetBall();
         AudioManager.Instance.PlayAudio("Catch", rotatorPlayer);

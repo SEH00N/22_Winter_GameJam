@@ -21,7 +21,7 @@ public class InfinityModeBall : MonoBehaviour
             DieParticle(other.contacts[0].point);
             manager.End();
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
