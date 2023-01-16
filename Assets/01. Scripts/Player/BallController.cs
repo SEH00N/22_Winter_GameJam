@@ -65,7 +65,7 @@ public class BallController : MonoBehaviour
         if (holdTimer >= maxHoldTime)
         {
             onHold = false;
-            // ignoreOnce = true;
+            ignoreOnce = true;
 
             Time.timeScale = 1f;
             holdTimer = 0f;
@@ -80,11 +80,11 @@ public class BallController : MonoBehaviour
         if (Input.touchCount <= 0)
             return;
 
-        // if (ignoreOnce)
-        // {
-        //     ignoreOnce = false;
-        //     return;
-        // }
+        if (ignoreOnce)
+        {
+            ignoreOnce = false;
+            return;
+        }
 
         if (Rotator)
         {
@@ -96,7 +96,7 @@ public class BallController : MonoBehaviour
             else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 onHold = false;
-                // ignoreOnce = false;
+                ignoreOnce = false;
 
                 Time.timeScale = 1f;
                 holdTimer = 0f;
@@ -120,14 +120,14 @@ public class BallController : MonoBehaviour
             }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
-                // if (ignoreOnce)
-                // {
-                //     ignoreOnce = false;
-                //     return;
-                // }
+                if (ignoreOnce)
+                {
+                    ignoreOnce = false;
+                    return;
+                }
 
                 onHold = false;
-                // ignoreOnce = false;
+                ignoreOnce = false;
 
                 Time.timeScale = 1f;
                 holdTimer = 0f;
@@ -137,11 +137,11 @@ public class BallController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
-            // if (ignoreOnce)
-            // {
-            //     ignoreOnce = false;
-            //     return;
-            // }
+            if (ignoreOnce)
+            {
+                ignoreOnce = false;
+                return;
+            }
             SetRotator();
         }
     }
