@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using static DEFINE;
+using UnityEngine.UI;
 
 public class InfinityModeManager : MonoBehaviour
 {
@@ -11,12 +11,13 @@ public class InfinityModeManager : MonoBehaviour
     private TextMeshProUGUI scoreText = null;
 
     private InfinityModeUI infinityModeUI = null;
-    private GameObject reviveAdUI = null;
     private FollowingCamera followingCamera = null;
+    private GameObject reviveAdUI = null;
 
-    private float rotatorSpeed;
+    private BallController ballController = null;
 
     private ReviveAd reviveAd = null;
+    private Button reviveCancelButton = null;
     private bool revived = false;
 
     private void Awake() 
@@ -25,14 +26,19 @@ public class InfinityModeManager : MonoBehaviour
         followingCamera = DEFINE.MainCam.GetComponent<FollowingCamera>();
 
         scoreText = GameObject.Find("Canvas").transform.Find("InfinityModeScoreText/Text").GetComponent<TextMeshProUGUI>();
-        reviveAdUI = GameObject.Find("Canvas/ReviveAdUI");
+        reviveAdUI = GameObject.Find("Canvas").transform.Find("ReviveAdUI").gameObject;
+        reviveCancelButton = reviveAdUI.transform.Find("Panel/CancelButton").GetComponent<Button>();
+
+        ballController = transform.Find("Ball").GetComponent<BallController>();
     }
 
     private void Start()
     {
+        reviveCancelButton.onClick.AddListener(End);
         reviveAdUI.SetActive(false);
+     
         InitGame();
-        Ball.Init(4f,this);
+        ballController.Init(4f, this);
     }
 
     private void InitGame()

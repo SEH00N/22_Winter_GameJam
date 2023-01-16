@@ -72,8 +72,6 @@ public class DataManager : MonoBehaviour
         data.Save();
 
         string json = JsonConvert.SerializeObject(data);
-        Debug.Log(json);
-        Debug.Log(GetPath<T>());
 
         File.WriteAllText(GetPath<T>(), json);
     }

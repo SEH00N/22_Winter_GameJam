@@ -21,8 +21,8 @@ public class StageLoadCallback : MonoBehaviour
     public void LoadStage() 
     {
         Sequence seq = DOTween.Sequence();
-        seq.AppendInterval(0.3f);
-        seq.Append(blockImage.DOFade(1f, 0.5f).OnComplete(() => {
+        // seq.AppendInterval(0.3f);
+        seq.Append(blockImage.DOFade(1f, 0.3f).OnComplete(() => {
             UnloadStage();
             StageManager.Instance.LoadStage(stageIndex);
         }));

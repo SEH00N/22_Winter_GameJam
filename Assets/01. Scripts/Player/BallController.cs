@@ -13,10 +13,11 @@ public class BallController : MonoBehaviour
     public bool Rotator => currentRotator != null;
 
     private BallRotator lastRotator = null;
-    public BallRotator LastRotator 
+    public BallRotator LastRotator
     {
         get => lastRotator;
-        set => lastRotator = value;}
+        set => lastRotator = value;
+    }
     private Vector2 lastRotaterPos;
     public Vector2 LastRotaterPos => lastRotaterPos;
 
@@ -31,7 +32,9 @@ public class BallController : MonoBehaviour
     private float holdTimer = 0f;
     private bool onHold = false;
 
-    public void Init(float rotatorDetectRadius,InfinityModeManager manager = null)
+    private bool ignoreOnce = false;
+
+    public void Init(float rotatorDetectRadius, InfinityModeManager manager = null)
     {
         rb2d = GetComponent<Rigidbody2D>();
 
@@ -44,7 +47,9 @@ public class BallController : MonoBehaviour
         initPos = transform.position;
         lastRotaterPos = transform.position;
 
-        rb2d.velocity = Vector2.zero;        
+        rb2d.velocity = Vector2.zero;
+
+        ignoreOnce = false;
     }
 
     public void PosReset()
@@ -54,64 +59,91 @@ public class BallController : MonoBehaviour
 
     private void Update()
     {
+        if (onHold)
+            holdTimer += Time.deltaTime;
+
+        if (holdTimer >= maxHoldTime)
+        {
+            onHold = false;
+            // ignoreOnce = true;
+
+            Time.timeScale = 1f;
+            holdTimer = 0f;
+        }
 
         MobileInput();
         PCInput();
-
-        if(onHold)
-            holdTimer += Time.deltaTime;
-
-        if(holdTimer >= maxHoldTime)
-        {
-            onHold = false;
-            Time.timeScale = 1f;
-        }
     }
 
     private void MobileInput()
     {
-        if(Input.touchCount <= 0)
+        if (Input.touchCount <= 0)
             return;
 
-        if(Rotator)
+        // if (ignoreOnce)
+        // {
+        //     ignoreOnce = false;
+        //     return;
+        // }
+
+        if (Rotator)
         {
-            if(Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 Time.timeScale = 0.5f;
                 onHold = true;
             }
-            else if(Input.GetTouch(0).phase == TouchPhase.Ended)
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                Time.timeScale = 1f;
                 onHold = false;
+                // ignoreOnce = false;
+
+                Time.timeScale = 1f;
+                holdTimer = 0f;
+
                 RemoveRotator();
             }
         }
-        else if(Input.GetTouch(0).phase == TouchPhase.Ended)
+        else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             SetRotator();
     }
 
     private void PCInput()
     {
-        if(Rotator)
+        if (Rotator)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Time.timeScale = 0.5f;
                 onHold = true;
-                Debug.Log("터치");
+
+                Time.timeScale = 0.5f;
             }
-            else if(Input.GetKeyUp(KeyCode.Space))
+            else if (Input.GetKeyUp(KeyCode.Space))
             {
-                Time.timeScale = 1f;
+                // if (ignoreOnce)
+                // {
+                //     ignoreOnce = false;
+                //     return;
+                // }
+
                 onHold = false;
+                // ignoreOnce = false;
+
+                Time.timeScale = 1f;
+                holdTimer = 0f;
+
                 RemoveRotator();
             }
         }
-        else if(Input.GetKeyUp(KeyCode.Space)){
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            // if (ignoreOnce)
+            // {
+            //     ignoreOnce = false;
+            //     return;
+            // }
             SetRotator();
-                Debug.Log("터치");
-    }
+        }
     }
 
     public void RemoveRotator()
@@ -134,13 +166,13 @@ public class BallController : MonoBehaviour
     public void SetRotator()
     {
         currentRotator = DetectRotator();
-        Debug.Log(currentRotator);
 
         if (currentRotator == null)
             return;
-        if(lastRotator != null)
+
+        if (lastRotator != null)
             manager?.AddScore();
-        
+
         rb2d.velocity = Vector2.zero;
         currentRotator.SetBall();
         AudioManager.Instance.PlayAudio("Catch", rotatorPlayer);
@@ -149,7 +181,7 @@ public class BallController : MonoBehaviour
     private BallRotator DetectRotator()
     {
         Collider2D[] detectedRotators = Physics2D.OverlapCircleAll(transform.position, rotatorDetectRadius, RotatorLayer);
-        
+
         if (detectedRotators.Length <= 0)
             return null;
 
@@ -161,6 +193,6 @@ public class BallController : MonoBehaviour
 
         BallRotator targetRotator = detectedRotators[0].GetComponent<BallRotator>();
 
-        return lastRotator == targetRotator ? null: targetRotator;
+        return lastRotator == targetRotator ? null : targetRotator;
     }
 }
