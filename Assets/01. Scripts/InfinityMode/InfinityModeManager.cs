@@ -11,9 +11,13 @@ public class InfinityModeManager : MonoBehaviour
     private TextMeshProUGUI scoreText = null;
 
     private InfinityModeUI infinityModeUI = null;
+    private GameObject reviveAdUI = null;
     private FollowingCamera followingCamera = null;
 
     private float rotatorSpeed;
+
+    private ReviveAd reviveAd = null;
+    private bool revived = false;
 
     private void Awake() 
     {
@@ -21,10 +25,12 @@ public class InfinityModeManager : MonoBehaviour
         followingCamera = DEFINE.MainCam.GetComponent<FollowingCamera>();
 
         scoreText = GameObject.Find("Canvas").transform.Find("InfinityModeScoreText/Text").GetComponent<TextMeshProUGUI>();
+        reviveAdUI = GameObject.Find("Canvas/ReviveAdUI");
     }
 
     private void Start()
     {
+        reviveAdUI.SetActive(false);
         InitGame();
         Ball.Init(4f,this);
     }
@@ -61,13 +67,20 @@ public class InfinityModeManager : MonoBehaviour
 
     public void End()
     {
-        scoreText.gameObject.SetActive(false);
-
-        followingCamera.Active(false);
-        
-        infinityModeUI.Init(score);
-        infinityModeUI.Active();
-
         Time.timeScale = 1f;
+        followingCamera.Active(false);
+
+        if(revived == false)
+        {
+            reviveAdUI.SetActive(true);
+            revived = true;
+        }
+        else
+        {
+            scoreText.gameObject.SetActive(false);
+
+            infinityModeUI.Init(score);
+            infinityModeUI.Active();
+        }
     }
 }

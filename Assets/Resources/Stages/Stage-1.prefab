@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   speed: 12
+  maxHoldTime: 1
 --- !u!114 &6330823640330713068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,26 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gap: 10
-  stageName:
-  - {fileID: 7858259192805565406, guid: 271626c2139ef4e4cb97f8c1e91a7497, type: 3}
-  - {fileID: 845514751652490540, guid: cc755d99159dabc46a9037cb207a4ad6, type: 3}
-  - {fileID: 845514751652490540, guid: c742b9a4b20c0b242a41ab563b197dbf, type: 3}
-  - {fileID: 845514751652490540, guid: d77b9d583580c1b49a61415433ce6629, type: 3}
-  - {fileID: 845514751652490540, guid: 593dd493bc718854abe7a048d4f88ad8, type: 3}
-  - {fileID: 355119873643821519, guid: 034374b90774e2140a807ed0206a5023, type: 3}
-  - {fileID: 8716359853281943619, guid: 92265dce871e141478d212c6b4f66acc, type: 3}
-  - {fileID: 1203169269871024082, guid: 59a186aee929efa4f87d0f69842ffaf6, type: 3}
-  - {fileID: 8795640520020059168, guid: 94b65af795d12be4b969733a68ded5b2, type: 3}
-  - {fileID: 7233895071521788224, guid: acbb35a7e7fe8364185afae1d154b8ad, type: 3}
-  - {fileID: 3406386180625072844, guid: 38f4a434b77c05f4bb9f4526b3b0bbeb, type: 3}
-  - {fileID: 3406386180625072844, guid: 8ded8a154fcce4e4eb7231a9d4e611a0, type: 3}
-  - {fileID: 4191011888422172713, guid: 1cb2a9a909458854da6e2cedad93fef3, type: 3}
-  - {fileID: 4191011888422172713, guid: 0fd959d70115e20479a3f8506e9be123, type: 3}
-  - {fileID: 7151887243641354163, guid: 3dc780e9c1f34b541a3701cc7e29abf1, type: 3}
-  - {fileID: 5483321383689798813, guid: ab6c7708f7ad89c4bb2a583baaef077d, type: 3}
-  - {fileID: 1281962685480316664, guid: d206ba56f5ffcfc4a9e48fe74b89faa3, type: 3}
-  - {fileID: 5244203514933774701, guid: 36fabe1db1f63774aaba39f1b3ab8946, type: 3}
-  - {fileID: 7566464853583773270, guid: 9e14c196f917d7141afc80f1bc55fad9, type: 3}
 --- !u!1 &5481377604459393734
 GameObject:
   m_ObjectHideFlags: 0
