@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,8 @@ public class InfinityModeManager : MonoBehaviour
     private ReviveAd reviveAd = null;
     private Button reviveCancelButton = null;
     private bool revived = false;
+
+    public List<Gimmick> gimmicks = new List<Gimmick>();
 
     private void Awake() 
     {

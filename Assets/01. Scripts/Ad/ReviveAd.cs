@@ -6,6 +6,7 @@ public class ReviveAd : RewardAdBase
 {
     private FollowingCamera followingCamera = null;
     private BallController ball = null;
+    private InfinityModeManager manager = null;
 
     protected override void Awake()
     {
@@ -47,10 +48,26 @@ public class ReviveAd : RewardAdBase
     public override void RewardedCallback(Reward reward)
     {
         ball = DEFINE.Ball;
-        gameObject.SetActive(false);
-        followingCamera.Active(true);
         ball.transform.position = ball.LastRotaterPos;
         ball.LastRotator = null;
         ball.gameObject.SetActive(true);
+
+        Vector3 camPos = followingCamera.transform.position;
+        camPos.y = ball.transform.position.y<=0 ? 0 : ball.transform.position.y;
+        followingCamera.transform.position = camPos;
+        followingCamera.Active(true);
+
+        Transform removeDetector = followingCamera.transform.Find("Confiner/Bottom");
+        Debug.Log(removeDetector);
+        manager = FindObjectOfType<InfinityModeManager>();
+        foreach(Gimmick gimmick in manager.gimmicks){
+            if(gimmick.transform.position.y>removeDetector.position.y){
+                gimmick.gameObject.SetActive(true);
+                gimmick.transform.SetParent(null);
+            }
+        }
+        
+        gameObject.SetActive(false);
+        
     }
 }
